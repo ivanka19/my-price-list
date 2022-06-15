@@ -32,6 +32,7 @@
         </div>
     </div>
 
+    @if (isset($companiesData))
     <section class="section company-list my-5" id="companies">
         <div class="container-xxl">
             <h2 class="mb-5 px-4">Створені прайс-листи</h2>
@@ -40,14 +41,14 @@
                 <div class="carousel-inner">
 
                     {{-- Вивід даних компанії --}}
-                    {{-- @for ($i = 0; $i < $companiesData->count(); $i++)
+                    @for ($i = 0; $i < $companiesData->count(); $i++)
                         @if ($i == 0)
                         <div class="carousel-item active">
                         @else
                         <div class="carousel-item">
                         @endif
                             <div class="row justify-content-center">
-                                <div class="col-8 col-sm-3">
+                                <div class="col-8 col-md-3">
                                     <a class="card m-2" href ="{{route('company', $companiesData[$i]->companyName)}}">
                                         <div class="row justify-content-center">
                                             <div class="col-8 col-sm-12">
@@ -68,7 +69,7 @@
     
                             </div>
                         </div>
-                    @endfor --}}
+                    @endfor
                 </div>
 
                 <button class="carousel-control-prev" type="button"
@@ -82,6 +83,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     <section class="section my-5" id="feedback-form">
         <div class="container-xxl">

@@ -4,7 +4,7 @@
             {{--  Якщо головна сторінка   --}}
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
-                    <img src="images/logo.svg" alt="logo" class="logo">
+                    <img src="{{URL::asset('images/logo.svg')}}" alt="logo" class="logo">
                 </div>
             </div>
         @else
@@ -14,7 +14,7 @@
                     <h2 class="px-4 mb-3 mb-sm-0">@yield('title')</h2>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
-                    <a href="{{route('home')}}"><img src="/images/logo.svg" class="mini_logo" alt=""></a>
+                    <a href="{{route('home')}}"><img src="{{URL::asset('images/logo.svg')}}" class="mini_logo" alt=""></a>
                 </div>
             </div>
         @endif

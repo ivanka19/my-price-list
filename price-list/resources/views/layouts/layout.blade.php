@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title> @yield('title') </title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="{{URL::asset('images/favicon.svg')}}">
 
     <!-- Bootstrap .css styles import -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/fontawesome/css/all.css">
+    <link rel="stylesheet" href="{{URL::asset('fontawesome/css/all.css')}}">
 
     <!-- Custom styleshhet -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
 </head>
 
 <body>

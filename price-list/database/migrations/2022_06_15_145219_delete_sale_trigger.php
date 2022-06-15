@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        DB::unprepared('CREATE TRIGGER `delete-sale` BEFORE DELETE ON `sales` FOR EACH ROW BEGIN 
+        UPDATE `items` SET `salePrice`=NULL WHERE `categoryId`=OLD.`categoryId`; END'); 
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        DB::unprepared('DROP TRIGGER `delete-sale`');
     }
 };

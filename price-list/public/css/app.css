@@ -1,0 +1,323 @@
+body {
+  font-family: "Lato", sans-serif;
+  color: #2D2D2D;
+  overflow-x: hidden;
+}
+
+*::-moz-selection {
+  color: #fff;
+  background: #FFA9B8;
+}
+
+*::selection {
+  color: #fff;
+  background: #FFA9B8;
+}
+
+a,
+input,
+button,
+textarea,
+select {
+  text-decoration: none;
+  outline: none;
+  transition: all 0.1s linear;
+}
+
+.header {
+  width: 100%;
+  background-color: #92FFFF;
+}
+.header .logo {
+  width: 100%;
+  position: relative;
+  top: 58%;
+}
+.header h2 {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 600;
+  border-left: 10px solid #2D2D2D;
+}
+.header .mini_logo {
+  width: 100%;
+}
+
+.intro h1 {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 700;
+}
+.intro p {
+  border-left: 10px solid #2D2D2D;
+}
+.intro p a {
+  color: #2D2D2D;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.intro .buttons .btn-intro-log {
+  width: 100%;
+  border-radius: 0;
+  font: inherit;
+  color: #2D2D2D;
+  font-weight: 700;
+  border: 3px solid #2D2D2D;
+  display: block;
+  text-align: center;
+  background-color: #FFDD63;
+  box-shadow: 7px 7px 0px #2D2D2D;
+  margin-bottom: 7px;
+}
+.intro .buttons .btn-intro-log:hover, .intro .buttons .btn-intro-log:focus {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: 0px 0px 0px #2D2D2D;
+}
+.intro .buttons .btn-intro-log:active {
+  box-shadow: inset 7px 7px 0px #ffcc17;
+}
+.intro .buttons .btn-intro-reg {
+  width: 100%;
+  border-radius: 0;
+  font: inherit;
+  color: #2D2D2D;
+  font-weight: 700;
+  border: 3px solid #2D2D2D;
+  display: block;
+  text-align: center;
+  background-color: #FFA9B8;
+  box-shadow: 7px 7px 0px #2D2D2D;
+  margin-bottom: 7px;
+}
+.intro .buttons .btn-intro-reg:hover, .intro .buttons .btn-intro-reg:focus {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: 0px 0px 0px #2D2D2D;
+}
+.intro .buttons .btn-intro-reg:active {
+  box-shadow: inset 7px 7px 0px #ff5d79;
+}
+
+.section {
+  text-align: center;
+}
+.section h2 {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 600;
+  border-right: 13px solid #2D2D2D;
+  width: auto;
+  margin: 0px auto;
+  display: inline-block;
+}
+
+.company-list .carousel .carousel-control-prev,
+.company-list .carousel .carousel-control-next {
+  font: inherit;
+  font-size: 3em;
+  color: #2D2D2D;
+}
+.company-list .carousel .card {
+  color: #2D2D2D;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 0;
+  cursor: pointer;
+  display: block;
+  box-shadow: 0px 0px 0px #2D2D2D;
+}
+.company-list .carousel .card-logo {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.company-list .carousel .card:hover, .company-list .carousel .card:focus {
+  transform: translateX(-7px) translateY(-7px);
+  box-shadow: 7px 7px 0px #2D2D2D;
+  border: 2px solid #2D2D2D;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border: 3px solid #2D2D2D;
+  border-radius: 0;
+}
+.form input:active, .form input:focus,
+.form textarea:active,
+.form textarea:focus {
+  box-shadow: 0px 0px 0px 7px #92FFFF;
+  border: 3px solid #2D2D2D;
+}
+.form textarea {
+  min-height: 150px;
+}
+.form input[type=submit],
+.form button {
+  width: 100%;
+  border-radius: 0;
+  font: inherit;
+  color: #2D2D2D;
+  font-weight: 700;
+  border: 3px solid #2D2D2D;
+  display: block;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 7px 7px 0px #FFA9B8;
+  margin-bottom: 7px;
+}
+.form input[type=submit]:hover, .form input[type=submit]:focus,
+.form button:hover,
+.form button:focus {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: 0px 0px 0px #FFA9B8;
+}
+.form input[type=submit]:active,
+.form button:active {
+  box-shadow: inset 7px 7px 0px #d9d9d9;
+}
+
+.footer {
+  width: 100%;
+  background-color: #92FFFF;
+}
+.footer .logo {
+  width: 100%;
+  position: relative;
+  top: -42%;
+  display: block;
+}
+.footer .nav .col {
+  text-align: center;
+}
+.footer .nav .col a {
+  font-family: "Lato", sans-serif;
+  color: #2D2D2D;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: all 0.1s linear;
+}
+.footer .nav .col a:hover, .footer .nav .col a:active, .footer .nav .col a:focus {
+  border-bottom: 2px solid #2D2D2D;
+}
+.footer p {
+  text-align: center;
+  margin: 0;
+}
+
+.new-intro .form .autorization-submit {
+  width: 100%;
+  border-radius: 0;
+  font: inherit;
+  color: #2D2D2D;
+  font-weight: 700;
+  border: 3px solid #2D2D2D;
+  display: block;
+  text-align: center;
+  background-color: #FFDD63;
+  box-shadow: 7px 7px 0px #2D2D2D;
+  margin-bottom: 7px;
+}
+.new-intro .form .autorization-submit:hover, .new-intro .form .autorization-submit:focus {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: 0px 0px 0px #2D2D2D;
+}
+.new-intro .form .autorization-submit:active {
+  box-shadow: inset 7px 7px 0px #ffcc17;
+}
+.new-intro .form .registration-submit {
+  width: 100%;
+  border-radius: 0;
+  font: inherit;
+  color: #2D2D2D;
+  font-weight: 700;
+  border: 3px solid #2D2D2D;
+  display: block;
+  text-align: center;
+  background-color: #FFA9B8;
+  box-shadow: 7px 7px 0px #2D2D2D;
+  margin-bottom: 7px;
+}
+.new-intro .form .registration-submit:hover, .new-intro .form .registration-submit:focus {
+  transform: translateX(7px) translateY(7px);
+  box-shadow: 0px 0px 0px #2D2D2D;
+}
+.new-intro .form .registration-submit:active {
+  box-shadow: inset 7px 7px 0px #ff5d79;
+}
+.new-intro .form p {
+  text-align: center;
+}
+.new-intro .form p a {
+  color: #2D2D2D;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: all 0.1s linear;
+}
+.new-intro .form p a:hover, .new-intro .form p a:active, .new-intro .form p a:focus {
+  border-bottom: 3px solid #2D2D2D;
+}
+.new-intro img {
+  width: 100%;
+}
+
+.col {
+  border: 1px solid;
+  background-color: darkgray;
+}
+
+.company-header {
+  background-color: #9e9e9e;
+}
+.company-header h2 {
+  border: none;
+}
+.company-logo {
+  display: block;
+  max-width: 100%;
+  max-height: 100px;
+}
+.company-social {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  color: #2D2D2D;
+}
+.company-social:hover, .company-social:focus, .company-social:active {
+  color: #141414;
+}
+.company-product {
+  font-size: 1.2em;
+}
+.company-product-img {
+  background-size: cover;
+  background-position: center;
+}
+.company-product .price {
+  font-weight: 700;
+}
+.company-product .old-price {
+  font-weight: 400;
+  font-size: 0.8em;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.company-product .new-price {
+  color: #fc1b1b;
+}
+.company-product .btn {
+  width: 60% !important;
+}
+.company-footer {
+  background-color: #9e9e9e;
+}
+.company-footer h2 {
+  font-family: "Source Code Pro", monospace;
+  font-weight: 700;
+}
+.company-footer .logo-link {
+  display: inline;
+  width: 200px;
+}
+.company-footer-logo {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Використовувати створені Контролери
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\CompanyAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,13 +40,13 @@ Route::post('/feedback/submit', [MainController::class, 'feedbackSubmit']) -> na
 Route::post('/registration/submit', [UserLoginController::class, 'registrationSubmit']) -> name('registration-submit');
 Route::post('/login/submit', [UserLoginController::class, 'loginSubmit']) -> name('login-submit');
 
+
+Route::get('/company/{companyName}/admin', [CompanyAdminController::class, 'companyAdmin']) -> name('company-admin');
+Route::get('/company/{companyName}/admin/main-info', [CompanyAdminController::class, 'mainInfoAdmin']) -> name('main-info-admin');
+Route::get('/company/{companyName}/admin/categories', [CompanyAdminController::class, 'categoriesAdmin']) -> name('categories-admin');
+Route::get('/company/{companyName}/admin/items', [CompanyAdminController::class, 'itemsAdmin']) -> name('items-admin');
+Route::get('/company/{companyName}/admin/sales', [CompanyAdminController::class, 'salesAdmin']) -> name('sales-admin');
+
 Route::get('/company', function () { return view('company.companyEmpty'); }) -> name('companyEmpty');
 Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> name('company');
 Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');
-
-
-// Route::get('/company/{companyName}/admin', [MainController::class, 'companyAdmin']) -> name('companyAdmin');
-Route::get('/company/{companyName}/admin', function () { return view('company.admin.admin'); }) -> name('company-admin');
-// Route::get('/company/{companyName}/admin/main-info', function () { return view('company.companyEmpty'); }) -> name('main-info');
-
-

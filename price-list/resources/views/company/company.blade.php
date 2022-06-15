@@ -9,15 +9,11 @@
         *::selection {
             background: rgb(184, 184, 184);
         }
-
-        .company-header, .company-footer {
-            background-color: {{$company->color}};
-        }
     </style>
 
     @include('company.includes.header', $company)
 
-    <div class="intro company-intro">
+    <div class="intro company-intro mt-5">
         <div class="container-xxl">
             <div class="row justify-content-between align-items-center">
                 <div class="col col-12 col-md-9">

@@ -37,53 +37,43 @@
     <section class="section my-5">
         <div class="container-xxl">
             <form action="" class="">
+                @csrf
+
+                <input type="text" class="form-control" hidden id="company-id" name="company-id" value="{{$company->companyId}}">
 
                 <div class="row mb-3">
-                    <div class="col col-12">
-                        <h3 class="text-start mb-3">Інформація про користувача</h3>
-                    </div>
-
                     <div class="col col-12 col-md-6">
-                        <!-- Назва компанії -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-name" readonly
-                                placeholder="Назва компанії" title="Назва Вашого магазину">
+                            <input type="text" class="form-control" id="company-name" name="company-name" placeholder="Назва компанії" title="Назва Вашого магазину" value="{{$company->companyName}}" readonly>
                             <label for="company-name">Назва компанії</label>
                         </div>
                     </div>
 
                     <div class="col col-12 col-md-6">
-                        <!-- Електронна адреса -->
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="company-email" readonly
-                                placeholder="Електронна адреса" title="Електронна адреса">
+                            <input type="email" class="form-control" id="company-email" name="company-email" placeholder="Електронна адреса" title="Електронна адреса" value="{{$company->user->email}}" readonly>
                             <label for="company-email">Електронна адреса</label>
                         </div>
                     </div>
 
-                    <div class="col col-12 col-md-6">
+                    {{-- <div class="col col-12 col-md-6">
                         <!-- Ім'я продавця -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-user" placeholder="Ім'я продавця"
-                                title="Ім'я продавця">
+                            <input type="text" class="form-control" id="company-user" placeholder="Ім'я продавця" title="Ім'я продавця">
                             <label for="company-user">Ім'я продавця</label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="col col-12 col-md-6">
-                        <!-- Місто розташування -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-city" placeholder="Місто розташування"
-                                title="Місто розташування">
+                            <input type="text" class="form-control" id="company-city" name="company-city" placeholder="Місто розташування" title="Місто розташування" value="{{$company->city}}">
                             <label for="company-city">Місто розташування</label>
                         </div>
                     </div>
 
                     <div class="col col-12 col-md-6">
-                        <!-- Номер телефону -->
                         <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="company-tel" placeholder="Номер телефону"
-                                title="Номер телефону">
+                            <input type="tel" class="form-control" id="company-tel" name="company-tel" placeholder="Номер телефону" title="Номер телефону" value="{{$company->phone}}">
                             <label for="company-tel">Номер телефону</label>
                         </div>
                     </div>
@@ -96,29 +86,22 @@
 
                     <div class="col col-12 col-md-4">
                         <div class="mb-3 text-start">
-                            <input class="form-control" type="file" id="company-logo-file"
-                                title="Завантажте зображення нового логотипу">
-                            <label for="company-logo-file" class="form-label">Завантажте зображення нового
-                                логотипу</label>
+                            <input class="form-control" type="file" id="company-logo-file" name="company-logo-file"title="Завантажте зображення нового логотипу">
+                            <label for="company-logo-file" class="form-label">Завантажте зображення нового логотипу</label>
                         </div>
 
                         <div class="mb-3 text-start">
-                            <input type="color" class="form-control form-control-color w-100" id="company-color"
-                                value="#563d7c" title="Оберіть основний колір">
+                            <input type="color" class="form-control form-control-color w-100" id="company-color" name="company-color" title="Оберіть основний колір" value="{{$company->color}}">
                             <label for="company-color" class="form-label">Оберіть основний колір</label>
                         </div>
-
                     </div>
                     <div class="col col-12 col-md-8">
                         <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-shortDescr" placeholder="Короткий опис"
-                                title="Короткий опис магазину. Буде відображений разом з назвою">
+                            <input type="url" class="form-control" id="company-shortDescr" name="company-shortDescr" placeholder="Короткий опис" title="Короткий опис магазину. Буде відображений разом з назвою" value="{{$company->shortDescr}}">
                             <label for="company-shortDescr">Короткий опис</label>
                         </div>
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Опис компанії" id="company-descr"
-                                style="min-height: 150px; max-height: 300px;"
-                                title="Розгорнутий опис магазину"></textarea>
+                            <textarea class="form-control" placeholder="Опис компанії" id="company-descr" name="company-descr" style="min-height: 150px; max-height: 300px;" title="Розгорнутий опис магазину">{{$company->companyDescription}}</textarea>
                             <label for="company-descr">Опис компанії</label>
                         </div>
                     </div>
@@ -131,29 +114,25 @@
 
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-instagram" placeholder="TikTok"
-                                value="https://www.instagram.com/" title="Введіть посилання на соціальну мережу">
+                            <input type="url" class="form-control" id="company-instagram" name="company-instagram" placeholder="TikTok" value="{{$company->instagram}}" title="Введіть посилання на соціальну мережу">
                             <label for="company-instagram">Instagram</label>
                         </div>
                     </div>
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-facebook" placeholder="TikTok" value=""
-                                title="Введіть посилання на соціальну мережу">
+                            <input type="url" class="form-control" id="company-facebook" name="company-facebook" placeholder="TikTok" value="{{$company->facebook}}" title="Введіть посилання на соціальну мережу">
                             <label for="company-facebook">Facebook</label>
                         </div>
                     </div>
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-youtube" placeholder="TikTok" value=""
-                                title="Введіть посилання на соціальну мережу">
+                            <input type="url" class="form-control" id="company-youtube" name="company-youtube" placeholder="TikTok" value="{{$company->youTube}}" title="Введіть посилання на соціальну мережу">
                             <label for="company-youtube">YouTube</label>
                         </div>
                     </div>
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="url" class="form-control" id="company-tiktok" placeholder="TikTok" value=""
-                                title="Введіть посилання на соціальну мережу">
+                            <input type="url" class="form-control" id="company-tiktok" name="company-tiktok" placeholder="TikTok" value="{{$company->tikTok}}" title="Введіть посилання на соціальну мережу">
                             <label for="company-tiktok">TikTok</label>
                         </div>
                     </div>
@@ -161,11 +140,10 @@
 
                 <div class="row justify-content-center">
                     <div class="col col-10 col-md-3 mb-3">
-                        <button type="submit" class="btn btn-success w-100 p-3" title="Зберегти зміну">Зберегти</button>
+                        <button type="submit" class="btn btn-success w-100 p-3" title="Зберегти зміни">Зберегти</button>
                     </div>
                     <div class="col col-10 col-md-3 mb-3">
-                        <button type="reset" class="btn btn-secondary w-100 p-3"
-                            title="Відмінити зміни">Скинути</button>
+                        <a href="{{route('main-info-admin', $company->companyName)}}" class="btn btn-secondary w-100 p-3" title="Відмінити зміни">Скинути</a>
                     </div>
                 </div>
             </form>

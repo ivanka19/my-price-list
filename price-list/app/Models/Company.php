@@ -19,8 +19,17 @@ class Company extends Model
         return $this->hasManyThrough(Item::class, Category::class, 'companyId', 'categoryId', 'companyId', 'categoryId');
     }
     
+    public function sales(){
+        return $this->hasManyThrough(Sale::class, Category::class, 'companyId', 'categoryId', 'companyId', 'categoryId');
+    }
+    
     public function itemsFromCategory($chosenCategory){
         $category = Category::where('categoryName', $chosenCategory)->first();
         return Item::where('categoryId', $category->categoryId)->get();
+    }
+
+    public function user(){
+        // Повертає користувача, що є власником компанії
+        return $this->belongsTo(User::class, 'userId', 'userId'); 
     }
 }

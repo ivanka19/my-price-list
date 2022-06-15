@@ -44,34 +44,31 @@
                     </div>
 
                     <div class="col col-12 col-md-3">
-                        <select class="form-select p-3 mb-3" id="company-new-sale-category">
+                        <select class="form-select p-3 mb-3" id="new-sale-category" name="new-sale-category" required>
                             <option selected>Оберіть категорію</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach ($company->categories as $category)
+                                <option value="{{$category->categoryId}}">{{$category->categoryName}}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col col-12 col-md-3">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-new-sale-percent"
-                                placeholder="Відсоток знижки" title="Введіть відсоток знижки" required>
-                            <label for="company-new-sale-percent">Відсоток знижки</label>
+                            <input type="text" class="form-control" id="new-sale-percent" name="new-sale-percent" placeholder="Відсоток знижки" title="Введіть відсоток знижки" required>
+                            <label for="new-sale-percent">Відсоток знижки</label>
                         </div>
                     </div>
 
                     <div class="col col-12 col-md-3">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="company-new-sale-date"
-                                title="Введіть дату завершення знижки" required>
-                            <label for="company-new-sale-date">Дата завершення</label>
+                            <input type="date" class="form-control" id="new-sale-date" name="new-sale-date" title="Введіть дату завершення знижки" required>
+                            <label for="new-sale-date">Дата завершення</label>
                         </div>
                     </div>
 
                     <div class="col col-12 col-md-3">
                         <div class="form-floating mb-3">
-                            <button type="submit" class="btn btn-success w-100 p-3"
-                                title="Зберегти зміну">Зберегти</button>
+                            <button type="submit" class="btn btn-success w-100 p-3" title="Зберегти зміну">Зберегти</button>
                         </div>
                     </div>
                 </div>
@@ -84,40 +81,38 @@
                     </div>
                 </div>
 
-                <div class="row align-items-center">
-                    <div class="col col-12 col-md-3">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-sale-category-" placeholder="Категорія"
-                                value="Name of categore" required>
-                            <label for="company-sale-category-">Категорія</label>
+
+                @foreach ($company->sales as $sale)
+                    <div class="row align-items-center">
+                        <div class="col col-12 col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="sale-category-{{$sale->saleId}}" placeholder="Категорія" value="{{$sale->category->categoryName}}" required>
+                                <label for="sale-category-{{$sale->saleId}}">Категорія</label>
+                            </div>
+                        </div>
+
+                        <div class="col col-12 col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="sale-percent-{{$sale->saleId}}" placeholder="Відсоток знижки" value="{{$sale->percent}}" required>
+                                <label for="sale-percent-{{$sale->saleId}}">Відсоток знижки</label>
+                            </div>
+                        </div>
+
+                        <div class="col col-12 col-md-3">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="sale-date-{{$sale->saleId}}" title="Введіть дату завершення знижки" value="{{$sale->dataEnd}}" required>
+                                <label for="sale-date-{{$sale->saleId}}">Дата завершення</label>
+                            </div>
+                        </div>
+
+                        <div class="col col-12 col-md-3">
+                            <div class="form-floating mb-3">
+                                <a href="" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col col-12 col-md-3">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-sale-percent-"
-                                placeholder="Відсоток знижки" value="25" required>
-                            <label for="company-sale-percent-">Відсоток знижки</label>
-                        </div>
-                    </div>
-
-                    <div class="col col-12 col-md-3">
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="company-sale-date-"
-                                title="Введіть дату завершення знижки" value="2022-06-25" required>
-                            <label for="company-sale-date-">Дата завершення</label>
-                        </div>
-                    </div>
-
-                    <div class="col col-12 col-md-3">
-                        <div class="form-floating mb-3">
-                            <a href="" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </form>
-
         </div>
     </section>
 

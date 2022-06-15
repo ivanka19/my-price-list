@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     use HasFactory;
+
+    public function category(){
+        // Відношення One To Many (Inverse): функція повертає категорію певного товару
+        return $this->belongsTo(Category::class, 'categoryId', 'categoryId'); 
+    }
 }

@@ -51,7 +51,7 @@
 
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="company-email" name="company-email" placeholder="Електронна адреса" title="Електронна адреса" value="{{$company->user->email}}" readonly>
+                            <input type="email" class="form-control" id="company-email" name="company-email" placeholder="Електронна адреса" title="Електронна адреса" value="{{$company->user()->email}}" readonly>
                             <label for="company-email">Електронна адреса</label>
                         </div>
                     </div>

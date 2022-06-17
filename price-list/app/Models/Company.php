@@ -32,6 +32,9 @@ class Company extends Model
 
     public function user(){
         // Повертає користувача, що є власником компанії
-        return $this->belongsTo(User::class, 'userId', 'userId'); 
+        $user = User::where('id', $this->userId)->first();
+        return $user;
+        // return Item::where('categoryId', $category->categoryId)->get();
+        // return $this->belongsTo(User::class, 'userId', 'userId'); 
     }
 }

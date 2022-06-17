@@ -29,7 +29,7 @@ class MainController extends Controller
 
         if ($company == null) {
             // Якщо компанії не знайдено
-            return view('companyEmpty');
+            return view('company.companyEmpty');
         }
         if ($chosenCategory == null) {
             // Вивід сторінки з усіма товарами

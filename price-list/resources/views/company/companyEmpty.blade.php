@@ -7,7 +7,7 @@
         <div class="container">
             <div class="alert alert-warning text-start">
                 <h1>Отакої!</h1>
-                <p>В нас не вийшло знайти заданої сторінки :(</p>
+                <p>На жаль, заданої сторінки не існує, або Ви не маєте до неї доступу</p>
                 <a href="javascript:history.back()" class="btn btn-secondary p-2">Повернутись назад</a>
             </div>
         </div>

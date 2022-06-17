@@ -22,12 +22,25 @@
                 </div>
             </div>
             <div class="row buttons justify-content-center justify-content-sm-start">
-                <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
-                    <a href="{{ route('login') }}" class="btn-intro-log p-3"> Увійти </a>
-                </div>
-                <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
-                    <a href="{{ route('registration') }}" class="btn-intro-reg p-3"> Зареєструватись </a>
-                </div>
+
+                @guest
+                    <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
+                        <a href="{{ route('login') }}" class="btn-intro-yellow p-3"> Увійти </a>
+                    </div>
+                    <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
+                        <a href="{{ route('register') }}" class="btn-intro-pink p-3"> Зареєструватись </a>
+                    </div>
+                @endguest
+
+                @auth
+                    <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
+                        <a href="" class="btn-intro-yellow p-3"> Панель адміністрування </a>
+                    </div>
+                    <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
+                        <a href="{{route('logout')}}" class="btn-intro-pink p-3"> Вийти </a>
+                    </div>
+                @endauth
+                
             </div>
         </div>
     </div>
@@ -93,7 +106,7 @@
 
                     @include('includes.message')
                     
-                    <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4">
+                    {{-- <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4">
                         @csrf
                         <!-- Обробка форми -->
                         <div class="row">
@@ -110,7 +123,7 @@
                                 <button type="submit" class="p-3">Надіслати</button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
 
@@ -133,7 +146,7 @@
                     <a href="{{ route('login') }}">Вхід до системи</a>
                 </div>
                 <div class="col col-12 col-md-3 text-center mb-1 mb-md-0">
-                    <a href="{{ route('registration') }}">Реєстрація</a>
+                    <a href="{{ route('register') }}">Реєстрація</a>
                 </div>
             </div>
             <p>© 2022 Всі права захищені.</p>

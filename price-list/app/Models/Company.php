@@ -9,6 +9,8 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];  
+
     public function categories(){
         // Відношення One To Many: функція повертає всі категорії, що додані до компанії
         return $this->hasMany(Category::class, 'companyId', 'companyId');

@@ -54,7 +54,7 @@ select {
   font-weight: 700;
   text-decoration: underline;
 }
-.intro .buttons .btn-intro-log {
+.intro .buttons .btn-intro-yellow {
   width: 100%;
   border-radius: 0;
   font: inherit;
@@ -67,14 +67,14 @@ select {
   box-shadow: 7px 7px 0px #2D2D2D;
   margin-bottom: 7px;
 }
-.intro .buttons .btn-intro-log:hover, .intro .buttons .btn-intro-log:focus {
+.intro .buttons .btn-intro-yellow:hover, .intro .buttons .btn-intro-yellow:focus {
   transform: translateX(7px) translateY(7px);
   box-shadow: 0px 0px 0px #2D2D2D;
 }
-.intro .buttons .btn-intro-log:active {
+.intro .buttons .btn-intro-yellow:active {
   box-shadow: inset 7px 7px 0px #ffcc17;
 }
-.intro .buttons .btn-intro-reg {
+.intro .buttons .btn-intro-pink {
   width: 100%;
   border-radius: 0;
   font: inherit;
@@ -87,11 +87,11 @@ select {
   box-shadow: 7px 7px 0px #2D2D2D;
   margin-bottom: 7px;
 }
-.intro .buttons .btn-intro-reg:hover, .intro .buttons .btn-intro-reg:focus {
+.intro .buttons .btn-intro-pink:hover, .intro .buttons .btn-intro-pink:focus {
   transform: translateX(7px) translateY(7px);
   box-shadow: 0px 0px 0px #2D2D2D;
 }
-.intro .buttons .btn-intro-reg:active {
+.intro .buttons .btn-intro-pink:active {
   box-shadow: inset 7px 7px 0px #ff5d79;
 }
 
@@ -315,4 +315,7 @@ select {
   background-position: center;
   background-repeat: no-repeat;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 

@@ -37,7 +37,7 @@ return new class extends Migration
         // Якщо існує - додати Foreign key
         Schema::table('companies', function (Blueprint $table) {
             $table->foreignId('userId')
-            ->references('userId')->on('users')
+            ->references('id')->on('users')
             ->onUpdate('cascade')->onDelete('cascade');;
         });
     }

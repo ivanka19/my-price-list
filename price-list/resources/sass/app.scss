@@ -90,11 +90,11 @@ select {
     }
 
     .buttons {
-        .btn-intro-log {
+        .btn-intro-yellow {
             @include button($clr: $yellow-color);
         }
 
-        .btn-intro-reg {
+        .btn-intro-pink {
             @include button($clr: $pink-color);
         }
     }

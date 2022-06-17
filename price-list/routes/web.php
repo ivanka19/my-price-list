@@ -26,9 +26,9 @@ Route::get('/registration', function () { return view('home'); }) -> name('regis
 
 Route::get('/help', function () { return view('home'); }) -> name('help'); // Правила користування
 
-Route::get('/login', function () { return view('login'); }) -> name('login'); // Авторизація 
+// Route::get('/login', function () { return view('login'); }) -> name('login'); // Авторизація 
 
-Route::get('/registration', function () { return view('registration'); }) -> name('registration'); // Реєстрація
+// Route::get('/registration', function () { return view('registration'); }) -> name('registration'); // Реєстрація
 
 Route::get('/help', function () { return view('help'); }) -> name('help'); // Правила користування
 
@@ -37,8 +37,8 @@ Route::get('/help', function () { return view('help'); }) -> name('help'); // П
 Route::post('/feedback/submit', [MainController::class, 'feedbackSubmit']) -> name('feedback-submit');
 
 // Шлях до обробки форми "Реєстрація" та "Авторизація" 
-Route::post('/registration/submit', [UserLoginController::class, 'registrationSubmit']) -> name('registration-submit');
-Route::post('/login/submit', [UserLoginController::class, 'loginSubmit']) -> name('login-submit');
+// Route::post('/registration/submit', [UserLoginController::class, 'registrationSubmit']) -> name('registration-submit');
+// Route::post('/login/submit', [UserLoginController::class, 'loginSubmit']) -> name('login-submit');
 
 
 Route::get('/company/{companyName}/admin', [CompanyAdminController::class, 'companyAdmin']) -> name('company-admin');

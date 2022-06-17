@@ -93,9 +93,7 @@
 
                     @include('includes.message')
                     
-                    {{-- <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4"> --}}
-                    <form method="post" action="" class="form mb-4">
-
+                    <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4">
                         @csrf
                         <!-- Обробка форми -->
                         <div class="row">

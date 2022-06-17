@@ -40,8 +40,10 @@ class MainController extends Controller
             return view('company.company', compact('company', 'chosenCategory'));
         }
     }
-
-
-
     
+    public function getAdminPage($userId)
+    {
+        $company = Company::where('userId', $userId)->first();
+        return redirect('/company/'.$company->companyName.'/admin');
+    }
 }

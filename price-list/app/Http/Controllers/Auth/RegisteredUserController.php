@@ -52,16 +52,11 @@ class RegisteredUserController extends Controller
 
         $company = Company::create([
             'companyName' => $request->input('company-name'),
-            'userId' => User::where('email', $user->email)->first()->userId,
+            'userId' => User::where('email', $user->email)->first()->id
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        // return redirect()->route('login')->with('success', 'Ваша компанія була успішно зареєстрована. Тепер авторизуйтесь у системі.');
-
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login')->with('success', 'Ваша компанія була успішно зареєстрована. Тепер авторизуйтесь у системі.');
     }
 }

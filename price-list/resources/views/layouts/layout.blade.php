@@ -18,10 +18,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{URL::asset('fontawesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
 
-    <!-- Custom styleshhet -->
-    <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>

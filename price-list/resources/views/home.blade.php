@@ -23,6 +23,7 @@
             </div>
             <div class="row buttons justify-content-center justify-content-sm-start">
 
+                
                 @guest
                     <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
                         <a href="{{ route('login') }}" class="btn-intro-yellow p-3"> Увійти </a>
@@ -34,10 +35,10 @@
 
                 @auth
                     <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
-                        <a href="" class="btn-intro-yellow p-3"> Панель адміністрування </a>
+                        <a href=" {{route('getAdminPage', session('authUser'))}} " class="btn-intro-yellow p-3"> Панель адміністрування </a>
                     </div>
                     <div class="col-10 col-sm-7 col-md-4 col-xl-3 my-2 my-md-0">
-                        <a href="{{route('logout')}}" class="btn-intro-pink p-3"> Вийти </a>
+                        <a href=" {{route('logout')}} " class="btn-intro-pink p-3"> Вийти </a>
                     </div>
                 @endauth
                 
@@ -105,8 +106,7 @@
                 <div class="col-12 col-sm-8 col-md-5">
 
                     @include('includes.message')
-                    
-                    {{-- <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4">
+                    <form method="post" action="{{ route('feedback-submit') }}" class="form mb-4">
                         @csrf
                         <!-- Обробка форми -->
                         <div class="row">
@@ -123,7 +123,7 @@
                                 <button type="submit" class="p-3">Надіслати</button>
                             </div>
                         </div>
-                    </form> --}}
+                    </form>
                 </div>
             </div>
 

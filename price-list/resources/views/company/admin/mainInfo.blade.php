@@ -36,9 +36,10 @@
 
     <section class="section my-5">
         <div class="container-xxl">
-            <form action="" class="">
+            <form method="post" action="{{ route('changemaininfo') }}" class="">
                 @csrf
-
+                @include('includes.message')
+                
                 <input type="text" class="form-control" hidden id="company-id" name="company-id" value="{{$company->companyId}}">
 
                 <div class="row mb-3">
@@ -151,6 +152,4 @@
     </section>
 
     
-
-    @include('company.includes.footer', $company)
 @endsection

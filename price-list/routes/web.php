@@ -24,7 +24,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [MainController::class, 'allCompanyData']) -> name('home'); // Домашня сторінка 
 
-Route::get('/help', function () { return view('help'); }) -> name('help'); // Правила користування
+// Route::get('/help', function () { return view('help'); }) -> name('help'); // Правила користування
+Route::view('/help', 'help') -> name('help'); // Правила користування
 
 
 // Шлях до обробки форми "Зворотній зв'язок" 
@@ -39,11 +40,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/{userId}', [MainController::class, 'getAdminPage']) -> name('getAdminPage');
+Route::get('/user/{userId}', [MainController::class, 'getAdminPage']) -> name('getAdminPage');
+
 
 Route::get('/company', function () { return view('company.companyEmpty'); }) -> name('companyEmpty');
 Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> name('company');
 Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');
 
 
-
+Route::post('/changemaininfo', [CompanyAdminController::class, 'changemaininfo']) -> name('changemaininfo');

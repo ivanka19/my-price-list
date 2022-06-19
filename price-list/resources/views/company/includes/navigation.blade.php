@@ -21,7 +21,7 @@
                 <a class="nav-link me-2 me-md-4" href="{{route('sales-admin', $company->companyName)}}">
                     <span class="fa-solid fa-percent me-1"></span> Знижки
                 </a>
-                <a class="nav-link me-2 me-md-4" href="#">
+                <a class="nav-link me-2 me-md-4" href="/logout">
                     <span class="fa-solid fa-arrow-right-from-bracket me-1"></span> Вийти
                 </a>
             </div>

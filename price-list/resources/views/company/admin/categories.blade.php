@@ -100,6 +100,4 @@
     </section>
 
     
-
-    @include('company.includes.footer', $company)
 @endsection

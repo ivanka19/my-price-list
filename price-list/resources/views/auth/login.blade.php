@@ -23,6 +23,7 @@
                             <div class="col-12 mb-4">
                                 <input class="p-2" type="password" placeholder="Пароль" name="password" id="password" value="">
                             </div>
+                            
                             <div class="col-12 mb-4">
                                 <input type="submit" class="p-3 autorization-submit" value="Увійти">
                             </div>

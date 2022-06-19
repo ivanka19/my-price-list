@@ -43,4 +43,16 @@ class CompanyAdminController extends Controller
             return view('company.admin.sales', compact('company'));
         return view('company.companyEmpty');
     }
+
+
+    public function changemaininfo(Request $request) {
+        $id = $request->input('company-id');
+        $request->validate([
+            'company-name' => 'required|min:2|max:45|regex:/^\S*$/u',
+            'user-name' => 'required|min:2|max:45',
+            'email' => 'required|email|min:7|max:30',
+            'password' => 'required|confirmed|min:6|max:20'
+        ]);
+        // dd($request);
+    }
 }

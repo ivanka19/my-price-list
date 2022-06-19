@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    @if (isset($companiesData))
+    @if (isset($companiesData) && $companiesData->count() > 0)
     <section class="section company-list my-5" id="companies">
         <div class="container-xxl">
             <h2 class="mb-5 px-4">Створені прайс-листи</h2>
@@ -114,7 +114,7 @@
                                 <input class="p-2" type="text" placeholder="Ваше ім'я" id="name" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="col-12 mb-3">
-                                <input class="p-2" type="email" placeholder="Електронна адреса" id="email" name="email" value="{{ old('email') }}">
+                                <input class="p-2" type="text" placeholder="Електронна адреса" id="email" name="email" value="{{ old('email') }}">
                             </div>
                             <div class="col-12 mb-4">
                                 <textarea class="p-2" placeholder="Ваше повідомлення..." id="message" name="message">{{ old('message') }}</textarea>

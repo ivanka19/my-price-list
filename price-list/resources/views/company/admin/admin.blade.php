@@ -33,7 +33,4 @@
         </div>
     </div>
 
-    
-
-    @include('company.includes.footer', $company)
 @endsection

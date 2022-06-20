@@ -319,7 +319,22 @@ select {
   background-position: center;
   background-repeat: no-repeat;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+/* Slider */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background-color: #d4d4d4;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #929292;
+  border-radius: 20px;
+}
 

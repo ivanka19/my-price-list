@@ -49,7 +49,7 @@ class CompanyAdminController extends Controller
         $request->validate([
             'city' =>  'nullable|min:2|max:30',
             'tel' => 'nullable|max:15',
-            'logo-file' => 'nullable|image',
+            'logo-file' => 'nullable|image|max:10240',
             'color' => 'nullable|max:15',
             'shortDescr' => 'nullable|max:30',
             'descr' => 'nullable',

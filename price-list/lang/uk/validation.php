@@ -84,7 +84,7 @@ return [
     'mac_address' => 'The :attribute must be a valid MAC address.',
     'max' => [
         'array' => 'The :attribute must not have more than :max items.',
-        'file' => 'The :attribute must not be greater than :max kilobytes.',
+        'file' => 'Файл :attribute повинен бути не більше :max КБ.',
         'numeric' => 'The :attribute must not be greater than :max.',
         'string' => 'Поле :attribute має містити не більше :max символів.',
     ],
@@ -92,7 +92,7 @@ return [
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
+        'file' => 'Файл :attribute повинен бути не менше :min kilobytes.',
         'numeric' => 'The :attribute must be at least :min.',
         'string' => 'Поле :attribute має містити не менше :min символів.',
     ],
@@ -133,7 +133,7 @@ return [
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
     'unique' => 'Значення :attribute вже зайняте.',
-    'uploaded' => 'The :attribute failed to upload.',
+    'uploaded' => ':attribute не вдалось завантажити.',
     'url' => 'Поле :attribute повинне бути правильною адресою.',
     'uuid' => 'The :attribute must be a valid UUID.',
 

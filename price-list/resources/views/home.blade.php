@@ -68,7 +68,7 @@
                                             <div class="col-8 col-sm-12">
                                                 <div class="ratio ratio-1x1">
                                                     @if ($companiesData[$i]->logo != NULL)
-                                                        <div class="card-logo"  style="background-image: URL('/images/company/{{$companiesData[$i]->logo}}')"></div>
+                                                        <div class="card-logo"  style="background-image: URL('{{asset('storage/images/'.$companiesData[$i]->companyName.'/'.$companiesData[$i]->logo)}}')"></div>
                                                     @endif
                                                 </div>
                                             </div>

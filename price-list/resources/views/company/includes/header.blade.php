@@ -23,9 +23,9 @@
             </div>
             <div class="col col-6 d-flex justify-content-end justify-content-md-center">
                 @if ($company->logo != NULL)
-                    <a href="/company/{{$company->companyName}}"> <img src="/images/company/{{$company->logo}}" alt="logo" class="company-logo"> </a>
+                    <a href="/company/{{$company->companyName}}"> <img src="{{asset('storage/images/'.$company->companyName.'/'.$company->logo)}}" alt="logo" class="company-logo"> </a>
                 @else
-                    <h2>{{$company->companyName}}</h2>
+                    <a href="/company/{{$company->companyName}}"> <h2>{{$company->companyName}}</h2> </a>
                 @endif
             </div>
             <div class="col col-12 col-md-3"></div>

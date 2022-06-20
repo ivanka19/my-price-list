@@ -38,20 +38,20 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'company-name' => 'required|min:2|max:45|regex:/^\S*$/u',
-            'user-name' => 'required|min:2|max:45',
-            'email' => 'required|email|min:7|max:30',
+            'companyName' => 'required|min:2|max:45|unique:companies|regex:/^\S*$/u',
+            'userName' => 'required|min:2|max:45',
+            'email' => 'required|email|min:7|max:30|unique:users',
             'password' => 'required|confirmed|min:6|max:20'
         ]);
 
         $user = User::create([
-            'userName' => $request->input('user-name'),
+            'userName' => $request->input('userName'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
 
         $company = Company::create([
-            'companyName' => $request->input('company-name'),
+            'companyName' => $request->input('companyName'),
             'userId' => User::where('email', $user->email)->first()->id
         ]);
 

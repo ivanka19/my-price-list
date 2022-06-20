@@ -18,13 +18,13 @@
                         @csrf
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <input class="p-2" type="text" placeholder="Назва компанії" name="company-name" id="company-name" value="{{ old('company-name') }}">
+                                <input class="p-2" type="text" placeholder="Назва компанії" name="companyName" id="companyName" value="{{ old('companyName') }}">
                             </div>
                             <div class="col-12 mb-3">
-                                <input class="p-2" type="text" placeholder="Ім'я користувача" name="user-name" id="user-name" value="{{ old('user-name') }}">
+                                <input class="p-2" type="text" placeholder="Ім'я користувача" name="userName" id="userName" value="{{ old('userName') }}">
                             </div>
                             <div class="col-12 mb-3">
-                                <input class="p-2" type="email" placeholder="Електронна адреса" name="email" id="email" value="{{ old('email') }}">
+                                <input class="p-2" type="text" placeholder="Електронна адреса" name="email" id="email" value="{{ old('email') }}">
                             </div>
                             <div class="col-12 mb-3">
                                 <input class="p-2" type="password" placeholder="Пароль" name="password" id="password">

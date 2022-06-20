@@ -13,12 +13,12 @@
                 <div class="col-12 col-sm-8 col-md-5 mt-lg-5">
 
                     @include('includes.message')
-                    <form method="post" action="" class="form mb-4" name="login-form">
-                    {{-- <form method="post" action="{{route('login-submit')}}" class="form mb-4" name="login-form"> --}}
+                    
+                    <form method="post" action="{{route('login')}}" class="form mb-4" name="login-form">
                         @csrf
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <input class="p-2" type="email" placeholder="Електронна адреса" name="email" id="email" value="{{ old('email') }}">
+                                <input class="p-2" type="text" placeholder="Електронна адреса" name="email" id="email" value="{{ old('email') }}">
                             </div>
                             <div class="col-12 mb-4">
                                 <input class="p-2" type="password" placeholder="Пароль" name="password" id="password" value="">

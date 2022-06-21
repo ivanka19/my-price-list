@@ -36,7 +36,7 @@
 
     <section class="section my-5">
         <div class="container-xxl">
-            <form method="post" action="{{ route('changemaininfo') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('updateMainInfo') }}" enctype="multipart/form-data">
                 @csrf
                 @include('includes.message')
                 

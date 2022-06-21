@@ -48,4 +48,6 @@ Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> 
 Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');
 
 
-Route::post('/changemaininfo', [CompanyAdminController::class, 'changemaininfo']) -> name('changemaininfo');
+Route::post('/updateMainInfo', [CompanyAdminController::class, 'updateMainInfo']) -> name('updateMainInfo');
+Route::post('/addCategory', [CompanyAdminController::class, 'addCategory']) -> name('addCategory');
+

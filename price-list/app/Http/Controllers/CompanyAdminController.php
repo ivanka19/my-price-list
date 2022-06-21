@@ -45,7 +45,7 @@ class CompanyAdminController extends Controller
         return view('company.companyEmpty');
     }
 
-    public function changemaininfo(Request $request) {
+    public function updateMainInfo(Request $request) {
         $request->validate([
             'city' =>  'nullable|min:2|max:30',
             'tel' => 'nullable|max:15',
@@ -86,6 +86,19 @@ class CompanyAdminController extends Controller
             'youTube' => $request -> input('youtube'),
             'tikTok' => $request -> input('tiktok'),
         ]); 
+
+        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+    }
+
+    public function addCategory(Request $request) {
+        $request->validate([
+            'new-category' =>  'required|min:2|max:50',
+        ]);
+
+        $category = Category::create([
+            'categoryName' => $request->input('new-category'),
+            'companyId' => $request->input('company-id'),
+        ]);
 
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }

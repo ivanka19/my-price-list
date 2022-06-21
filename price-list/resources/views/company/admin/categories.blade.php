@@ -37,10 +37,11 @@
     <section class="section my-5">
         <div class="container-xxl">
 
-            <form action="" class="">
+            <form method="post" action="{{ route('addCategory') }}" class="">
                 @csrf
+                @include('includes.message')
 
-                <input type="text" class="form-control" hidden id="company-id" name="company-id" value="{{$company->companyId}}">
+                <input type="text" class="form-control" hidden id="id" name="id" value="{{$company->companyId}}">
 
                 <div class="row mb-3 align-items-center">
                     <div class="col col-12">
@@ -49,8 +50,8 @@
 
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company-new-category" name="company-new-category" placeholder="Назва категорії" title="Введіть назву категорії" required>
-                            <label for="company-new-category">Назва категорії</label>
+                            <input type="text" class="form-control" id="new-category" name="new-category" placeholder="Назва категорії" title="Введіть назву категорії">
+                            <label for="new-category">Назва категорії</label>
                         </div>
                     </div>
 

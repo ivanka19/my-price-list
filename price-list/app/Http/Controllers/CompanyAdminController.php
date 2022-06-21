@@ -110,9 +110,9 @@ class CompanyAdminController extends Controller
         $category = Category::where('categoryId', $categoryId)->first();
         if (session('authUser') == $category->company->userId) {
             Category::where('categoryId', $categoryId)->delete();
+            return redirect()->back()->with('success', 'Дані було успішно змінено');;
         }
         else { return view('company.companyEmpty'); }
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }
 
 
@@ -147,4 +147,36 @@ class CompanyAdminController extends Controller
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }
 
+    public function updateItem($itemId, Request $request) {
+        $request->validate([
+            'item-name' => 'required|min:2|max:50',
+            'item-price' => 'required|numeric|min:1',
+            'item-descr' => 'nullable|min:10',
+        ]);
+
+        $avaible = 0;
+        if ($request->input('avaible') != null) { $avaible = 1; }
+
+        Item::where('itemId', $itemId)->update([
+            'itemName' => $request->input('item-name'),
+            'price' => $request->input('item-price'),
+            'description' => $request->input('item-descr'),
+            'available' => $avaible,
+        ]);
+        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+    }
+
+    public function deleteItem($itemId) {
+        $item = Item::where('itemId', $itemId)->first();
+        if (session('authUser') == $item->category->company->userId) {
+            if (Storage::exists('public/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)) {
+                Storage::delete('public/images/'.$item->category->company->companyName.'/'.$item->itemPhoto);
+            }
+            Item::where('itemId', $itemId)->delete();
+            return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        }
+        else { 
+            return view('company.companyEmpty'); 
+        }
+    }
 }

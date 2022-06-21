@@ -1,5 +1,4 @@
 <div class="col-10 col-sm-6 col-md-4 col-lg-3 company-product card rounded-0 border-0">
-    {{$item->category->company->companyName}}
     <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
     <div class="card-body d-flex flex-column px-0 text-start">
         <h5 class="card-title mb-3 fw-bold">{{$item->itemName}}</h5>

@@ -86,69 +86,67 @@
                 </div>
             </form>
 
-            <form action="" class=""> 
-                @csrf
+            <div class="row mb-3">
+                <div class="col col-12">
+                    <h3 class="text-start mb-3">Редагувати або видалити товари</h3>
+                </div>
+            </div>
 
-                <div class="row mb-3">
-                    <div class="col col-12">
-                        <h3 class="text-start mb-3">Редагувати або видалити товари</h3>
-                    </div>
+            @foreach ($company->items as $item)
+                <form method="post" action="{{ route('updateItem', $item->itemId) }}">
+                    @csrf
 
-                    @foreach ($company->items as $item)
-                        <div class="row mb-3">
-                            <div class="col col-12 col-md-3">
-                                <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
-                            </div>
+                    <div class="row mb-3">
+                        <div class="col col-12 col-md-3">
+                            <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
+                        </div>
 
-                            <div class="col col-12 col-md-9">
-                                <div class="row">
-                                    <div class="col col-12 col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="item-name-{{$item->itemId}}" name="item-name-{{$item->itemId}}" placeholder="Назва товару" title="Назва товару" value="{{$item->itemName}}" required>
-                                            <label for="item-name-{{$item->itemId}}">Назва товару</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="item-category-{{$item->itemId}}" name="item-category-{{$item->itemId}}" placeholder="Категорія" readonly value="{{$item->category->categoryName}}">
-                                            <label for="item-category-{{$item->itemId}}">Категорія</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="item-price-{{$item->itemId}}" name="item-price-{{$item->itemId}}" placeholder="Ціна товару" title="Введіть ціну" required value="{{$item->price}}">
-                                            <label for="item-price-{{$item->itemId}}">Ціна товару</label>
-                                        </div>
+                        <div class="col col-12 col-md-9">
+                            <div class="row">
+                                <div class="col col-12 col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Назва товару" title="Назва товару" value="{{$item->itemName}}">
+                                        <label for="item-name">Назва товару</label>
                                     </div>
-                                    <div class="col col-12 col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Опис товару" id="item-descr-{{$item->itemId}}" name="item-descr-{{$item->itemId}}" style="min-height: 130px; max-height: 200px;" title="Опис товару">{{$item->description}}</textarea>
-                                            <label for="item-descr-{{$item->itemId}}">Опис товару</label>
-                                        </div>
-                                        <div class="form-check text-start">
-                                            <input class="form-check-input" type="checkbox" id="avaible-{{$item->itemId}}" name="avaible-{{$item->itemId}}" value="{{$item->available}}">
-                                            <label class="form-check-label" for="avaible-{{$item->itemId}}">
-                                                В наявності
-                                            </label>
-                                        </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="item-category" name="item-category" placeholder="Категорія" readonly value="{{$item->category->categoryName}}">
+                                        <label for="item-category">Категорія</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="item-price" name="item-price" placeholder="Ціна товару" title="Введіть ціну" value="{{$item->price}}">
+                                        <label for="item-price">Ціна товару</label>
                                     </div>
                                 </div>
-
-                                <div class="row justify-content-center">
-                                    <div class="col col-12 col-md-4">
-                                        <div class="form-floating">
-                                            <a href="" class="btn btn-outline-success w-100 p-3" title="Зберегти">Зберегти</a>
-                                        </div>
+                                <div class="col col-12 col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" placeholder="Опис товару" id="item-descr" name="item-descr" style="min-height: 130px; max-height: 200px;" title="Опис товару">{{$item->description}}</textarea>
+                                        <label for="item-descr">Опис товару</label>
                                     </div>
-                                    <div class="col col-12 col-md-4">
-                                        <div class="form-floating">
-                                            <a href="" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
-                                        </div>
+                                    <div class="form-check text-start">
+                                        <input class="form-check-input" type="checkbox" id="avaible" name="avaible" value="{{$item->available}}">
+                                        <label class="form-check-label" for="avaible">
+                                            В наявності
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col col-12 col-md-4">
+                                    <div class="form-floating">
+                                        <button type="submit" class="btn btn-outline-success w-100 p-3" title="Зберегти">Зберегти</button>
+                                    </div>
+                                </div>
+                                <div class="col col-12 col-md-4">
+                                    <div class="form-floating">
+                                        <a href="{{ route('deleteItem', $item->itemId) }}" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            </form>
-
-
+                    </div>
+                </form>
+            @endforeach
         </div>
     </section>
     

@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteCategory/{categoryId}', [CompanyAdminController::class, 'deleteCategory']) -> name('deleteCategory');
 
     Route::post('/addItem', [CompanyAdminController::class, 'addItem']) -> name('addItem');
+    Route::post('/updateItem/{itemId}', [CompanyAdminController::class, 'updateItem']) -> name('updateItem');
+    Route::get('/deleteItem/{itemId}', [CompanyAdminController::class, 'deleteItem']) -> name('deleteItem');
+
 
 
 });

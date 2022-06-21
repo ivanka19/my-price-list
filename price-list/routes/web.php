@@ -37,17 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/company/{companyName}/admin/categories', [CompanyAdminController::class, 'categoriesAdmin']) -> name('categories-admin');
     Route::get('/company/{companyName}/admin/items', [CompanyAdminController::class, 'itemsAdmin']) -> name('items-admin');
     Route::get('/company/{companyName}/admin/sales', [CompanyAdminController::class, 'salesAdmin']) -> name('sales-admin');
+
+    Route::post('/updateMainInfo', [CompanyAdminController::class, 'updateMainInfo']) -> name('updateMainInfo');
+    Route::post('/addCategory', [CompanyAdminController::class, 'addCategory']) -> name('addCategory');
+    Route::post('/updateCategory/{categoryId}', [CompanyAdminController::class, 'updateCategory']) -> name('updateCategory');
+    Route::get('/deleteCategory/{categoryId}', [CompanyAdminController::class, 'deleteCategory']) -> name('deleteCategory');
+
+
+
 });
 
-
 Route::get('/user/{userId}', [MainController::class, 'getAdminPage']) -> name('getAdminPage');
-
 
 Route::get('/company', function () { return view('company.companyEmpty'); }) -> name('companyEmpty');
 Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> name('company');
 Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');
-
-
-Route::post('/updateMainInfo', [CompanyAdminController::class, 'updateMainInfo']) -> name('updateMainInfo');
-Route::post('/addCategory', [CompanyAdminController::class, 'addCategory']) -> name('addCategory');
-

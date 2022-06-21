@@ -36,12 +36,13 @@
 
     <section class="section my-5">
         <div class="container-xxl">
+            
+            @include('includes.message')
 
             <form method="post" action="{{ route('addCategory') }}" class="">
                 @csrf
-                @include('includes.message')
 
-                <input type="text" class="form-control" hidden id="id" name="id" value="{{$company->companyId}}">
+                <input type="text" class="form-control" hidden id="company-id" name="company-id" value="{{$company->companyId}}">
 
                 <div class="row mb-3 align-items-center">
                     <div class="col col-12">
@@ -62,41 +63,39 @@
                     </div>
                 </div>
             </form>
-
-            <form action="">
-                @csrf
-                
-                <div class="row align-items-center">
-                    <div class="col col-12">
-                        <h3 class="text-start mb-3">Редагувати існуючі категорії</h3>
-                    </div>
+            
+                    
+            <div class="row align-items-center">
+                <div class="col col-12">
+                    <h3 class="text-start mb-3">Редагувати існуючі категорії</h3>
                 </div>
-
-                @foreach ($company->categories as $category)
+            </div>
+            
+            @foreach ($company->categories as $category)
+                <form method="post" action="{{ route('updateCategory', $category->categoryId) }}">
+                    @csrf
                     <div class="row align-items-center mb-3 mb-md-0">
+                        {{-- <input type="text" class="form-control" id="category-id" name="category-id" placeholder="Назва категорії" value="{{$category->categoryId}}" hidden> --}}
+                        
                         <div class="col col-12 col-md-4">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="company-category-{{$category->categoryId}}" name="company-category-{{$category->categoryId}}" placeholder="Назва категорії" value="{{$category->categoryName}}" required>
-                                <label for="company-category-{{$category->categoryId}}">Назва категорії</label>
-                            </div>
-                        </div>
-
-                        <div class="col col-12 col-md-4">
-                            <div class="form-floating mb-3">
-                                <a href="" class="btn btn-outline-success w-100 p-3" title="Зберегти">Зберегти</a>
+                                <input type="text" class="form-control" id="category-name" name="category-name" placeholder="Назва категорії" value="{{$category->categoryName}}" required>
+                                <label for="category-name">Назва категорії</label>
                             </div>
                         </div>
                         <div class="col col-12 col-md-4">
                             <div class="form-floating mb-3">
-                                <a href="" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
+                                <button type="submit" class="btn btn-outline-success w-100 p-3" title="Зберегти">Зберегти</button>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-md-4">
+                            <div class="form-floating mb-3">
+                                <a href="{{ route('deleteCategory', $category->categoryId) }}" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
-
-
-            </form>
-
+                </form>
+            @endforeach
         </div>
     </section>
 

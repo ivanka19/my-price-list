@@ -87,19 +87,31 @@ class CompanyAdminController extends Controller
             'tikTok' => $request -> input('tiktok'),
         ]); 
 
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно додано');;
     }
 
     public function addCategory(Request $request) {
-        $request->validate([
-            'new-category' =>  'required|min:2|max:50',
-        ]);
-
+        $request->validate([ 'new-category' =>  'required|min:2|max:50' ]);
         $category = Category::create([
             'categoryName' => $request->input('new-category'),
             'companyId' => $request->input('company-id'),
         ]);
-
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }
+
+    public function updateCategory($categoryId, Request $request) {
+        $request->validate([ 'category-name' =>  'required|min:2|max:50' ]);
+        Category::where('categoryId', $categoryId)->update([ 'categoryName' => $request -> input('category-name'), ]); 
+        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+    }
+
+    public function deleteCategory($categoryId) {
+        $category = Category::where('categoryId', $categoryId)->first();
+        if (session('authUser') == $category->company->userId) {
+            Category::where('categoryId', $categoryId)->delete();
+        }
+        else { return view('company.companyEmpty'); }
+        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+    }
+
 }

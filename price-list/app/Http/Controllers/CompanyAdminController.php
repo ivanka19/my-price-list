@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\Company; // Підключення Моделі Company (companies table in DB)
 use App\Models\Category;
+use App\Models\Item;
 
 class CompanyAdminController extends Controller
 {
@@ -111,6 +112,38 @@ class CompanyAdminController extends Controller
             Category::where('categoryId', $categoryId)->delete();
         }
         else { return view('company.companyEmpty'); }
+        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+    }
+
+
+    public function addItem(Request $request) {
+        $request->validate([
+            'new-item-name' => 'required|min:2|max:50',
+            'new-item-category' => 'required|not_in:0',
+            'new-item-price' => 'required|numeric|min:1',
+            'new-item-file' => 'required|image|max:10240',
+            'new-item-descr' => 'nullable|min:10',
+        ]);
+
+        $company = Category::where('categoryId', $request->input('new-item-category'))->first()->company;
+
+        if ($request->isMethod('post') && $request->file('new-item-file')) {
+            $file = $request->file('new-item-file');
+            $upload_folder = 'public/images/'.$company->companyName;
+            $filename = $file->getClientOriginalName();
+            Storage::putFileAs($upload_folder, $file, $filename);
+        }
+
+        $item = Item::create([
+            'itemName' => $request->input('new-item-name'),
+            'price' => $request->input('new-item-price'),
+            'description' => $request->input('new-item-descr'),
+            'itemPhoto' => $request -> file('new-item-file')->getClientOriginalName(),
+            'categoryId' => $request->input('new-item-category'),
+
+            // 'available' => $request->input(''),
+        ]);
+
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }
 

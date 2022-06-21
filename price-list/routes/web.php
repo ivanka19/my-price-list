@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/updateCategory/{categoryId}', [CompanyAdminController::class, 'updateCategory']) -> name('updateCategory');
     Route::get('/deleteCategory/{categoryId}', [CompanyAdminController::class, 'deleteCategory']) -> name('deleteCategory');
 
+    Route::post('/addItem', [CompanyAdminController::class, 'addItem']) -> name('addItem');
 
 
 });

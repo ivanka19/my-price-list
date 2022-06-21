@@ -51,7 +51,7 @@
 
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="new-category" name="new-category" placeholder="Назва категорії" title="Введіть назву категорії">
+                            <input type="text" class="form-control" id="new-category" name="new-category" placeholder="Назва категорії" title="Введіть назву категорії" value="{{ old('new-category') }}">
                             <label for="new-category">Назва категорії</label>
                         </div>
                     </div>

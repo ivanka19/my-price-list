@@ -36,9 +36,10 @@
 
     <section class="section my-5">
         <div class="container-xxl">
-            <form action="" class="">
+            <form method="post" action="{{ route('addItem') }}" class="" enctype="multipart/form-data">
                 @csrf
-
+                @include('includes.message')
+                
                 <div class="row mb-3">
                     <div class="col col-12">
                         <h3 class="text-start mb-3">Додати новий товар</h3>
@@ -46,19 +47,19 @@
 
                     <div class="col col-12 col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="new-item-name" name="new-item-name" placeholder="Назва товару" title="Введіть назву нового товару" required>
-                            <label for="company-new-item-name">Назва товару</label>
+                            <input type="text" class="form-control" id="new-item-name" name="new-item-name" placeholder="Назва товару" title="Введіть назву нового товару" value="{{ old('new-item-name') }}">
+                            <label for="new-item-name">Назва товару</label>
                         </div>
 
-                        <select class="form-select p-3 mb-3" id="new-item-category" name="new-item-category" required>
-                            <option selected>Оберіть категорію</option>
+                        <select class="form-select p-3 mb-3" id="new-item-category" name="new-item-category">
+                            <option value="" selected>Оберіть категорію</option>
                             @foreach ($company->categories as $category)
                                 <option value="{{$category->categoryId}}">{{$category->categoryName}}</option>
                             @endforeach
                         </select>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="new-item-price" name="new-item-price" placeholder="Ціна товару" title="Введіть ціну" required>
+                            <input type="text" class="form-control" id="new-item-price" name="new-item-price" placeholder="Ціна товару" title="Введіть ціну" value="{{ old('new-item-price') }}">
                             <label for="new-item-price">Ціна товару</label>
                         </div>
                     </div>
@@ -70,7 +71,7 @@
                         </div>
 
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Опис товару" id="new-item-descr" name="new-item-descr" style="min-height: 120px; max-height: 200px;" title="Опис товару"></textarea>
+                            <textarea class="form-control" placeholder="Опис товару" id="new-item-descr" name="new-item-descr" style="min-height: 120px; max-height: 200px;" title="Опис товару">{{ old('new-item-descr') }}</textarea>
                             <label for="new-item-descr">Опис товару</label>
                         </div>
                     </div>
@@ -96,9 +97,7 @@
                     @foreach ($company->items as $item)
                         <div class="row mb-3">
                             <div class="col col-12 col-md-3">
-                                <div class="ratio ratio-1x1">
-                                    <img src="{{URL::asset('images/company/'.$item->itemPhoto)}}" alt="">
-                                </div>
+                                <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
                             </div>
 
                             <div class="col col-12 col-md-9">

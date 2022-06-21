@@ -112,8 +112,9 @@
                         </div>
                     </nav>
                 </div>
+                
                 <div class="col col-12 col-md-9 col-lg-10">
-                    <div class="row justify-content-center justify-content-sm-start">
+                    <div class="row justify-content-center justify-content-sm-start" style="min-height: 500px;">
                         @if (isset($chosenCategory))
                             @foreach ($company->itemsFromCategory($chosenCategory) as $item)
                                 @include('includes.item', compact('company', 'item'))

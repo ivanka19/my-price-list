@@ -1,5 +1,6 @@
 <div class="col-10 col-sm-6 col-md-4 col-lg-3 company-product card rounded-0 border-0">
-    <div class="company-product-img ratio ratio-1x1" style="background-image: URL('/images/company/{{$item->itemPhoto}}')"> </div>
+    {{$item->category->company->companyName}}
+    <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
     <div class="card-body d-flex flex-column px-0 text-start">
         <h5 class="card-title mb-3 fw-bold">{{$item->itemName}}</h5>
         <p class="card-text mb-5">
@@ -28,8 +29,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col col-12 col-lg-6">
-                            <a href="/images/company/{{$item->itemPhoto}}" target="_blank">
-                                <div class="company-product-img ratio ratio-1x1" style="background-image: URL('/images/company/{{$item->itemPhoto}}')"></div>
+                            <a href="{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}" target="_blank">
+                                <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"></div>
                             </a>
                         </div>
                         <div class="col col-12 col-lg-6 text-start">

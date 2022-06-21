@@ -64,7 +64,7 @@ return [
     'image' => 'Завантажений файл повинен бути зображенням.',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field does not exist in :other.',
-    'integer' => 'The :attribute must be an integer.',
+    'integer' => ':attribute має бути цілочисельним.',
     'ip' => 'The :attribute must be a valid IP address.',
     'ipv4' => 'The :attribute must be a valid IPv4 address.',
     'ipv6' => 'The :attribute must be a valid IPv6 address.',
@@ -85,7 +85,7 @@ return [
     'max' => [
         'array' => 'The :attribute must not have more than :max items.',
         'file' => 'Файл :attribute повинен бути не більше :max КБ.',
-        'numeric' => 'The :attribute must not be greater than :max.',
+        'numeric' => 'Число :attribute не повинне бути більше than :max.',
         'string' => 'Поле :attribute має містити не більше :max символів.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -93,7 +93,7 @@ return [
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'Файл :attribute повинен бути не менше :min kilobytes.',
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'Число :attribute має бути щонайменш :min.',
         'string' => 'Поле :attribute має містити не менше :min символів.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',

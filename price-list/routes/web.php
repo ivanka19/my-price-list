@@ -47,8 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/updateItem/{itemId}', [CompanyAdminController::class, 'updateItem']) -> name('updateItem');
     Route::get('/deleteItem/{itemId}', [CompanyAdminController::class, 'deleteItem']) -> name('deleteItem');
 
-
-
+    Route::post('/addSale', [CompanyAdminController::class, 'addSale']) -> name('addSale');
+    Route::get('/deleteSale/{saleId}', [CompanyAdminController::class, 'deleteSale']) -> name('deleteSale');
 });
 
 Route::get('/user/{userId}', [MainController::class, 'getAdminPage']) -> name('getAdminPage');

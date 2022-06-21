@@ -17,8 +17,7 @@ return new class extends Migration
             Schema::create('sales', function (Blueprint $table) {
                 $table->bigIncrements('saleId');
                 $table->bigInteger('percent');
-                $table->date('dataEnd');
-
+                
                 $table->timestamps();
             });
         }

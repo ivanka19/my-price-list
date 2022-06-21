@@ -32,35 +32,35 @@
 
                         @if ($company->instagram)
                             <div class="col col-2 col-md-12 mb-md-3">
-                                <a href="{{$company->instagram}}" class="company-social text-center text-md-end" target="_blank">
+                                <a href="{{$company->instagram}}" class="company-social text-center" target="_blank">
                                     <span class="fa-brands fa-instagram-square"></span>
                                 </a>
                             </div>
                         @endif
                         @if ($company->facebook)
                             <div class="col col-2 col-md-12 mb-md-3">
-                                <a href="{{$company->facebook}}" class="company-social text-center text-md-end" target="_blank">
+                                <a href="{{$company->facebook}}" class="company-social text-center" target="_blank">
                                     <span class="fa-brands fa-facebook-square"></span>
                                 </a>
                             </div>
                         @endif
                         @if ($company->youTube)
                             <div class="col col-2 col-md-12 mb-md-3">
-                                <a href="{{$company->youTube}}" class="company-social text-center text-md-end" target="_blank">
+                                <a href="{{$company->youTube}}" class="company-social text-center" target="_blank">
                                     <span class="fa-brands fa-youtube"></span>
                                 </a>
                             </div>
                         @endif
                         @if ($company->tikTok)
                             <div class="col col-2 col-md-12 mb-md-3">
-                                <a href="{{$company->tikTok}}" class="company-social text-center text-md-end" target="_blank">
+                                <a href="{{$company->tikTok}}" class="company-social text-center" target="_blank">
                                     <span class="fa-brands fa-tiktok"></span>
                                 </a>
                             </div>
                         @endif
 
                         <div class="col col-2 col-md-12">
-                            <a href="mailto:{{$company->email}}" class="company-social text-center text-md-end" target="_blank">
+                            <a href="mailto:{{$company->email}}" class="company-social text-center" target="_blank">
                                 <span class="fa-solid fa-envelope"></span>
                             </a>
                         </div>

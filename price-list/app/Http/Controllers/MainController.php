@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\FeedbackRequest; // Підключення запиту для валідації форми
 use Mail;
 
 use App\Models\Company; // Підключення Моделі Company (companies table in DB)
@@ -12,22 +11,6 @@ use App\Models\Category;
 
 class MainController extends Controller
 {
-    // Функція, що оброблює форму "Зв’яжіться з нами"
-    public function feedbackSubmit(FeedbackRequest $request) {
-        // Валідація даних відбувається в запиті FeedbackRequest,
-        // якщо виявляється помилка, далі функція не виконується, а користувач отримує повідомлення про помилку
-        
-        // $name = $request->input('name');
-        // $email = $request->input('email');
-        // $mess = $request->input('message');
-        // Mail::send(['text' => 'mail'], ['name', 'Price list'], function($message) {
-        //     $message->to('price.list.my@gmail.com', 'To Price List')->subject('Test email');
-        //     $message->from('price.list.my@gmail.com', 'from Price List');
-        // });
-
-        // view('mail', compact('name', 'email', 'mess'))
-    }
-    
     // Функція, що повертає на головну сторінку інформацію про всі компанії (в каруселі)
     public function allCompanyData() {
         return view('home', ['companiesData' => Company::all()]);
@@ -53,6 +36,8 @@ class MainController extends Controller
     public function getAdminPage($userId)
     {
         $company = Company::where('userId', $userId)->first();
-        return redirect('/company/'.$company->companyName.'/admin');
+        if ($company != null)
+            return redirect('/company/'.$company->companyName.'/admin');
+        return view('company.companyEmpty'); // Якщо компанії не знайдено
     }
 }

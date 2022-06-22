@@ -14,31 +14,36 @@ class CompanyAdminController extends Controller
 {
     public function companyAdmin($companyName) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company) { return view('company.admin.admin', compact('company')); }
+        if ($company)
+            return view('company.admin.admin', compact('company'));
         return view('company.companyEmpty');
     }
 
     public function mainInfoAdmin($companyName) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company) { return view('company.admin.mainInfo', compact('company')); }
+        if ($company)
+            return view('company.admin.mainInfo', compact('company'));
         return view('company.companyEmpty');
     }
 
     public function categoriesAdmin($companyName) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company) { return view('company.admin.categories', compact('company')); }
+        if ($company)
+            return view('company.admin.categories', compact('company'));
         return view('company.companyEmpty');
     }
 
     public function itemsAdmin($companyName) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company) { return view('company.admin.items', compact('company')); }
+        if ($company)
+            return view('company.admin.items', compact('company'));
         return view('company.companyEmpty');
     }
     
     public function salesAdmin($companyName) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company) { return view('company.admin.sales', compact('company')); }
+        if ($company)
+            return view('company.admin.sales', compact('company'));
         return view('company.companyEmpty');
     }
 
@@ -63,8 +68,13 @@ class CompanyAdminController extends Controller
             $filename = $file->getClientOriginalName();
             Storage::putFileAs($upload_folder, $file, $filename);
             
-            if(Storage::exists('public/images/'.$company->companyName.'/'.$company->logo)){ Storage::delete('public/images/'.$company->companyName.'/'.$company->logo); }
-            Company::where('companyId', $request->input('companyId'))->update(['logo' => $request -> file('logo-file')->getClientOriginalName(),]);
+            if(Storage::exists('public/images/'.$company->companyName.'/'.$company->logo)){
+                Storage::delete('public/images/'.$company->companyName.'/'.$company->logo);
+            }
+
+            Company::where('companyId', $request->input('companyId'))->update([
+                'logo' => $request -> file('logo-file')->getClientOriginalName(),
+            ]);
         }
 
         Company::where('companyId', $request->input('companyId'))->update([
@@ -84,7 +94,10 @@ class CompanyAdminController extends Controller
 
     public function addCategory(Request $request) {
         $request->validate([ 'new-category' =>  'required|min:2|max:50' ]);
-        $category = Category::create(['categoryName' => $request->input('new-category'), 'companyId' => $request->input('company-id')]);
+        $category = Category::create([
+            'categoryName' => $request->input('new-category'),
+            'companyId' => $request->input('company-id'),
+        ]);
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
     }
 
@@ -100,8 +113,9 @@ class CompanyAdminController extends Controller
             Category::where('categoryId', $categoryId)->delete();
             return redirect()->back()->with('success', 'Дані було успішно змінено');;
         }
-        return view('company.companyEmpty');
+        else { return view('company.companyEmpty'); }
     }
+
 
     public function addItem(Request $request) {
         $request->validate([
@@ -112,9 +126,10 @@ class CompanyAdminController extends Controller
             'new-item-descr' => 'nullable|min:10',
         ]);
 
+        $company = Category::where('categoryId', $request->input('new-item-category'))->first()->company;
+
         if ($request->isMethod('post') && $request->file('new-item-file')) {
             $file = $request->file('new-item-file');
-            $company = Category::where('categoryId', $request->input('new-item-category'))->first()->company;
             $upload_folder = 'public/images/'.$company->companyName;
             $filename = $file->getClientOriginalName();
             Storage::putFileAs($upload_folder, $file, $filename);
@@ -125,7 +140,9 @@ class CompanyAdminController extends Controller
             'price' => $request->input('new-item-price'),
             'description' => $request->input('new-item-descr'),
             'itemPhoto' => $request -> file('new-item-file')->getClientOriginalName(),
-            'categoryId' => $request->input('new-item-category')
+            'categoryId' => $request->input('new-item-category'),
+
+            // 'available' => $request->input(''),
         ]);
 
         return redirect()->back()->with('success', 'Дані було успішно змінено');;
@@ -159,9 +176,12 @@ class CompanyAdminController extends Controller
             Item::where('itemId', $itemId)->delete();
             return redirect()->back()->with('success', 'Дані було успішно змінено');;
         }
-        return view('company.companyEmpty'); 
+        else { 
+            return view('company.companyEmpty'); 
+        }
     }
 
+    
     public function addSale(Request $request) {
         $request->validate([
             'categoryId' => 'required|not_in:0|unique:sales',
@@ -179,9 +199,11 @@ class CompanyAdminController extends Controller
     public function deleteSale($saleId) {
         $sale = Sale::where('saleId', $saleId)->first();
         if (session('authUser') == $sale->category->company->userId) {
-            Sale::where('saleId', $saleId)->delete();
+            Item::where('saleId', $saleId)->delete();
             return redirect()->back()->with('success', 'Дані було успішно змінено');;
         }
-        return view('company.companyEmpty'); 
+        else { 
+            return view('company.companyEmpty'); 
+        }
     }
 }

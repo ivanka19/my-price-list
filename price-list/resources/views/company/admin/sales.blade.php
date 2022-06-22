@@ -37,9 +37,10 @@
     <section class="section my-5">
         <div class="container-xxl">
 
+            @include('includes.message')
+            
             <form method="post" action="{{ route('addSale') }}" class="">
                 @csrf
-                @include('includes.message')
 
                 <div class="row mb-3 align-items-center">
                     <div class="col col-12">

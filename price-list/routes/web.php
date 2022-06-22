@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Використовувати створені Контролери
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\CompanyAdminController;
 
 /*
@@ -24,12 +24,10 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [MainController::class, 'allCompanyData']) -> name('home'); // Домашня сторінка 
 
-// Route::get('/help', function () { return view('help'); }) -> name('help'); // Правила користування
 Route::view('/help', 'help') -> name('help'); // Правила користування
 
-
 // Шлях до обробки форми "Зворотній зв'язок" 
-Route::post('/feedback/submit', [MainController::class, 'feedbackSubmit']) -> name('feedback-submit');
+Route::post('/feedback/submit', [SendEmailController::class, 'send']) -> name('feedback-submit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/company/{companyName}/admin', [CompanyAdminController::class, 'companyAdmin']) -> name('company-admin');

@@ -25,7 +25,7 @@
                 @if ($company->logo != NULL)
                     <a href="/company/{{$company->companyName}}"> <img src="{{asset('storage/images/'.$company->companyName.'/'.$company->logo)}}" alt="logo" class="company-logo"> </a>
                 @else
-                    <a href="/company/{{$company->companyName}}"> <h2>{{$company->companyName}}</h2> </a>
+                    <a href="/company/{{$company->companyName}}" class="text-dark"> <h2>{{$company->companyName}}</h2> </a>
                 @endif
             </div>
             <div class="col col-12 col-md-3"></div>

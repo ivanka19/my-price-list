@@ -4,15 +4,13 @@
     }
 </style>
 
-<footer class="footer company-footer py-4 mt-5">
+<footer class="footer company-footer py-4 mt-5 d-print-none">
     <div class="container-xxl">
         <div class="row justify-content-center justify-content-md-between align-items-center mb-4">
             <div class="col col-10 col-md-3 mb-3 mb-md-0">
                 
                 @if ($company->logo != NULL)
                     <a href="{{route('company', $company->companyName)}}"> <div class="company-footer-logo ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$company->companyName.'/'.$company->logo)}}')"> </div> </a>
-                    {{-- <a href="{{route('company', $company->companyName)}}"> <div class="company-footer-logo ratio ratio-1x1" style="background-image: URL('/images/company/{{$company->logo}}')"> </div> </a> --}}
-
                 @else
                     <a href="{{route('company', $company->companyName)}}"> <h2>{{$company->companyName}}</h2> </a>
                 @endif                

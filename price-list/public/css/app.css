@@ -281,26 +281,26 @@ select {
 .company-social:hover, .company-social:focus, .company-social:active {
   color: #141414;
 }
-.company-product {
+.company-product, .company-modal {
   font-size: 1.2em;
 }
-.company-product-img {
+.company-product-img, .company-modal-img {
   background-size: cover;
   background-position: center;
 }
-.company-product .price {
+.company-product .price, .company-modal .price {
   font-weight: 700;
 }
-.company-product .old-price {
+.company-product .old-price, .company-modal .old-price {
   font-weight: 400;
   font-size: 0.8em;
   text-decoration: line-through;
   text-decoration-thickness: 1px;
 }
-.company-product .new-price {
+.company-product .new-price, .company-modal .new-price {
   color: #fc1b1b;
 }
-.company-product .btn {
+.company-product .btn, .company-modal .btn {
   width: 60% !important;
 }
 .company-footer {
@@ -337,4 +337,82 @@ select {
   background-color: #929292;
   border-radius: 20px;
 }
+@media print {
+    .company-product {
+        display: block;
+    }
 
+    .company-product .row {
+        display: block;
+        page-break-inside: avoid;
+    }
+
+    .col-print-1 {
+        width: 8%;
+        float: left;
+    }
+
+    .col-print-2 {
+        width: 16%;
+        float: left;
+    }
+
+    .col-print-3 {
+        width: 25%;
+        float: left;
+    }
+
+    .col-print-4 {
+        width: 33%;
+        float: left;
+    }
+
+    .col-print-5 {
+        width: 42%;
+        float: left;
+    }
+
+    .col-print-6 {
+        width: 50%;
+        float: left;
+    }
+
+    .col-print-7 {
+        width: 58%;
+        float: left;
+    }
+
+    .col-print-8 {
+        width: 66%;
+        float: left;
+    }
+
+    .col-print-9 {
+        width: 75%;
+        float: left;
+    }
+
+    .col-print-10 {
+        width: 83%;
+        float: left;
+    }
+
+    .col-print-11 {
+        width: 92%;
+        float: left;
+    }
+
+    .col-print-12 {
+        width: 100%;
+        float: left;
+    }
+
+    .mb-print-1 {
+        margin-bottom: 10px !important;
+    }
+
+    .py-print-0 {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

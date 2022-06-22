@@ -4,7 +4,7 @@
     }
 </style>
 
-<header class="header company-header">
+<header class="header company-header d-print-none">
     <div class="container-xxl">
         <div class="row py-2 align-items-center">
             <div class="col col-6 col-md-3 d-flex align-items-center">

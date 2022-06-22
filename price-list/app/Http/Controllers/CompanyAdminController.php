@@ -199,7 +199,7 @@ class CompanyAdminController extends Controller
     public function deleteSale($saleId) {
         $sale = Sale::where('saleId', $saleId)->first();
         if (session('authUser') == $sale->category->company->userId) {
-            Item::where('saleId', $saleId)->delete();
+            Sale::where('saleId', $saleId)->delete();
             return redirect()->back()->with('success', 'Дані було успішно змінено');;
         }
         else { 

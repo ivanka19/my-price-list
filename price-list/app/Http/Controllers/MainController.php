@@ -24,12 +24,21 @@ class MainController extends Controller
         if ($company == null) {
             return view('company.companyEmpty'); // Якщо компанії не знайдено
         }
-        if ($chosenCategory == null) {
-            return view('company.company', compact('company')); // Вивід сторінки з усіма товарами
-        }
         else {
-            return view('company.company', compact('company', 'chosenCategory')); // Якщо передано категорію для сортування
+            if ($chosenCategory == null) {
+                $items = $company->items; // Всі товари
+            }
+            else {
+                $items = Category::where('categoryName', $chosenCategory)->first()->items; // Якщо передано категорію для сортування
+            }
+            return view('company.company', compact('company', 'chosenCategory', 'items'));
         }
+    }
+
+    public function available($companyName, $available = true) {
+        $company = Company::where('companyName', $companyName)->first();
+        $items = $company->itemsAvailable;
+        return view('company.company', compact('company', 'items', 'available'));
     }
     
     // Перенаправлення користувача на сторінку адміністрування

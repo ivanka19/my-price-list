@@ -30,14 +30,16 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $user = User::where('email', $request->input('email'))->first()->id;
+        $user = User::where('email', $request->input('email'))->first();
+        if ($user == null) {
+            return redirect()->back()->with('error', 'Такого користувача не знайдено.');
+        }
 
         $request->authenticate();
         $request->session()->regenerate();
-        $request->session()->put('authUser', $user);
+        $request->session()->put('authUser', $user->id);
 
-        // return redirect()->intended(RouteServiceProvider::HOME);
-        return redirect('/user/'.$user);
+        return redirect('/user/'.$user->id);
     }
 
     /**

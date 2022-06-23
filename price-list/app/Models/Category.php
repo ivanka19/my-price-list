@@ -14,4 +14,8 @@ class Category extends Model
     public function company(){
         return $this->belongsTo(Company::class, 'companyId', 'companyId'); 
     }
+
+    public function items(){
+        return $this->hasMany(Item::class, 'categoryId', 'categoryId');
+    }
 }

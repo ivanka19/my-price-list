@@ -90,27 +90,23 @@
 
                                 <div class="offcanvas-body">
                                     <div class="row">
-                                        @if (isset($chosenCategory))
-                                            @foreach ($company->categories as $category)
-                                                @if ($category->categoryName == $chosenCategory)
-                                                    <a class="btn btn-secondary w-100 p-2 mb-3" href="{{route('companyWithCategory',  ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">{{$category->categoryName}}</a>
-                                                @else
-                                                    <a class="btn btn-light w-100 p-2 mb-3" href="{{route('companyWithCategory',  ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">{{$category->categoryName}}</a>
-                                                @endif
-                                            @endforeach
-                                        @else
-                                            @foreach ($company->categories as $category)
-                                                <a class="btn btn-light w-100 p-2 mb-3" href="{{route('companyWithCategory', ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">{{$category->categoryName}}</a>
-                                            @endforeach
-                                        @endif
+                                        @foreach ($company->categories as $category)
+                                            <a class="btn @if (isset($chosenCategory) && $category->categoryName == $chosenCategory) btn-secondary @else btn-light @endif
+                                                w-100 p-2 mb-3" href="{{route('companyWithCategory', ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">
+                                                {{$category->categoryName}} ({{$category->items->count()}})
+                                            </a>
+                                        @endforeach
+
+                                        <div class="col-12 p-0">
+                                            <a class="btn @if (isset($available)) btn-secondary @else btn-light @endif w-100 p-2 mb-3" href="{{route('available', $company->companyName)}}">
+                                                В наявності
+                                            </a>
+                                        </div>
                                         <div class="col-12 p-0">
                                             <a class="btn btn-light w-100 p-2 mb-3" href="{{route('company', $company->companyName)}}">Всі товари</a>
                                         </div>
                                         <div class="col-12 p-0">
-                                            <a class="btn btn-light w-100 p-2 mb-3" href=" ">В наявності</a>
-                                        </div>
-                                        <div class="col-12 p-0">
-                                            <a class="btn  btn-outline-secondary w-100 p-2 mb-3" href="" onclick="window.print();return false;">Роздрукувати</a>
+                                            <a class="btn  btn-outline-secondary d-none d-md-block w-100 p-2 mb-3" href="" onclick="window.print();return true;">Роздрукувати</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,14 +119,13 @@
                     <div class="row justify-content-center justify-content-sm-start" style="min-height: 300px;">
                         @if (isset($chosenCategory))
                             <h3 class="text-start d-none d-print-block">{{$chosenCategory}}</h3>
-                            @foreach ($company->itemsFromCategory($chosenCategory) as $item)
-                                @include('company.includes.item', compact('company', 'item'))
-                            @endforeach
-                        @else
-                            @foreach ($company->items as $item)
-                                @include('company.includes.item', compact('company', 'item'))
-                            @endforeach
+                        @elseif (isset($available))
+                            <h3 class="text-start d-none d-print-block">В наявності</h3>
                         @endif
+                        
+                        @foreach ($items as $item)
+                            @include('company.includes.item', compact('company', 'item'))
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -52,5 +52,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/user/{userId}', [MainController::class, 'getAdminPage']) -> name('getAdminPage');
 
 Route::get('/company', function () { return view('company.companyEmpty'); }) -> name('companyEmpty');
+Route::get('/company/{companyName}/available', [MainController::class, 'available']) -> name('available');
 Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> name('company');
 Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');

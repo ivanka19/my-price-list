@@ -24,15 +24,13 @@ class Company extends Model
     public function sales(){
         return $this->hasManyThrough(Sale::class, Category::class, 'companyId', 'categoryId', 'companyId', 'categoryId');
     }
-    
-    public function itemsFromCategory($chosenCategory){
-        $category = Category::where('categoryName', $chosenCategory)->first();
-        return Item::where('categoryId', $category->categoryId)->get();
+
+    public function itemsAvailable(){
+        return $this->items()->where('available', 1);
     }
 
     public function user(){
         // Повертає користувача, що є власником компанії
-        $user = User::where('id', $this->userId)->first();
-        return $user;
+        return User::where('id', $this->userId)->first();
     }
 }

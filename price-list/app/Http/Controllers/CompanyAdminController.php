@@ -195,6 +195,24 @@ class CompanyAdminController extends Controller
         }
     }
 
+    public function changePriceOnCategory(Request $request) {
+        $request->validate([
+            'calculate-category' => 'required|not_in:0',
+            'calculate-price' => 'required|numeric',
+        ]);
+
+        $category = Category::where('categoryId', $request->input('calculate-category'))->first();
+        $newPrice = $request->input('calculate-price');
+        foreach ($category->items as $item) {
+            if ($item->price + $newPrice > 0) {
+                Item::where('itemId', $item->itemId)->update([ 'price' => $item->price + $newPrice ]);
+            } else {
+                return redirect()->back()->with('error', 'Неможливо змінити ціну товару "'.$item->itemName.'". Нова ціна менше нуля.');
+            }
+        }
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
+    }
+
     
     public function addSale(Request $request) {
         $request->validate([

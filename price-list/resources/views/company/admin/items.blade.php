@@ -56,9 +56,10 @@
                         </div>
 
                         <select class="form-select p-3 mb-3" id="new-item-category" name="new-item-category">
-                            <option value="" selected>Оберіть категорію</option>
+                            <option value="">Оберіть категорію</option>
                             @foreach ($company->categories as $category)
-                                <option value="{{$category->categoryId}}">{{$category->categoryName}}</option>
+                                <option value="{{$category->categoryId}}" @if (isset($chosenCategory) && $category->categoryName == $chosenCategory) selected @endif>
+                                    {{$category->categoryName}}</option>
                             @endforeach
                         </select>
 
@@ -104,9 +105,10 @@
 
                     <div class="col col-12 col-md">
                         <select class="form-select p-3 mb-3" id="calculate-category" name="calculate-category">
-                            <option value="" selected>Оберіть категорію</option>
+                            <option value="">Оберіть категорію</option>
                             @foreach ($company->categories as $category)
-                                <option value="{{$category->categoryId}}">{{$category->categoryName}}</option>
+                                <option value="{{$category->categoryId}}" @if (isset($chosenCategory) && $category->categoryName == $chosenCategory) selected @endif>
+                                    {{$category->categoryName}}</option>
                             @endforeach
                         </select>
                     </div>

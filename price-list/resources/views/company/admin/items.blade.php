@@ -90,12 +90,40 @@
             </form>
 
             <div class="row mb-3">
-                <div class="col col-12">
+                <div class="col col-12 col-md-8">
                     <h3 class="text-start mb-3">Редагувати або видалити товари</h3>
+                </div>
+
+                <div class="col col-12 col-md-4 text-end">
+                    <a class="btn btn-outline-secondary p-2 px-5" data-bs-toggle="offcanvas" href="#offcanvas" role="button" aria-controls="offcanvas">
+                        <span class="fa-solid fa-list me-1"></span> Категорії ({{$company->categories->count()}})
+                    </a>
+                    
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasLabel">Категорії ({{$company->categories->count()}})</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body">
+                            <div class="row">
+                                @foreach ($company->categories as $category)
+                                    <a class="btn @if (isset($chosenCategory) && $category->categoryName == $chosenCategory) btn-secondary @else btn-light @endif
+                                        w-100 p-2 mb-3" href="{{route('items-admin', ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">
+                                        {{$category->categoryName}} ({{$category->items->count()}})
+                                    </a>
+                                @endforeach
+
+                                <div class="col-12 p-0">
+                                    <a class="btn btn-light w-100 p-2 mb-3" href="{{route('items-admin', $company->companyName)}}">Всі товари</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            @foreach ($company->items as $item)
+            @foreach ($items as $item)
                 <form method="post" action="{{ route('updateItem', $item->itemId) }}">
                     @csrf
 
@@ -122,7 +150,7 @@
                                 </div>
                                 <div class="col col-12 col-md-6">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Опис товару" id="item-descr" name="item-descr" style="min-height: 130px; max-height: 200px;" title="Опис товару">{{$item->description}}</textarea>
+                                        <textarea class="form-control" placeholder="Опис товару" id="item-descr" name="item-descr" style="min-height: 130px; max-height: 170px;" title="Опис товару">{{$item->description}}</textarea>
                                         <label for="item-descr">Опис товару</label>
                                     </div>
                                     <div class="form-check text-start">

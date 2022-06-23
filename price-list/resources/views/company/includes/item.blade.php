@@ -1,18 +1,15 @@
 <div class="col-10 col-sm-6 col-md-4 col-lg-3 col-print-12 mb-print-1 company-product card rounded-0 border-0">
-    <div class="row h-100">
+    <div class="row h-100 m-1">
 
-        <div class="col-12 col-print-3">
+        <div class="col-12 p-0 col-print-3">
             <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
         </div>
 
         <div class="col-12 col-print-9 card-body d-flex flex-column d-print-block px-0 text-start">
-            <h5 class="card-title mb-3 mb-print-1 fw-bold">{{$item->itemName}}</h5>
+            <h5 class="card-title mb-2 mb-print-1 fw-bold">{{$item->itemName}} @if($item->available) <span class="badge rounded-pill  bg-success">В наявності</span>@endif</h5>
             <p class="card-text mb-5 mb-print-1">
-                @if ($item->salePrice == NULL)
-                    <span class="price pe-1">{{$item->price}}</span>
-                @else
-                    <span class="price old-price pe-1">{{$item->price}}</span>
-                    <span class="price new-price pe-1">{{$item->salePrice}}</span>
+                @if ($item->salePrice == NULL) <span class="price pe-1">{{$item->price}}</span>
+                @else <span class="price old-price pe-1">{{$item->price}}</span> <span class="price new-price pe-1">{{$item->salePrice}}</span>
                 @endif
                 грн
             </p>
@@ -42,7 +39,7 @@
                         <div class="col col-12 col-lg-6 text-start">
                             <p class="mt-3 mt-lg-0">
                                 <a class="text-secondary" href="{{route('company', $company->companyName)}}">{{$company->companyName}}</a>
-                                <a class="text-secondary" href="{{route('companyWithCategory', ['companyName'=>$company->companyName, 'chosenCategory'=>$item->category->categoryName])}}">/{{$item->category->categoryName}}</a>
+                                <a class="text-secondary" href="{{route('company', ['companyName'=>$company->companyName, 'chosenCategory'=>$item->category->categoryName])}}">/{{$item->category->categoryName}}</a>
                             </p>
                             <p>{{$item->description}}</p>
                             <p class="">

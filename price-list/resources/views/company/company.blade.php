@@ -92,7 +92,7 @@
                                     <div class="row">
                                         @foreach ($company->categories as $category)
                                             <a class="btn @if (isset($chosenCategory) && $category->categoryName == $chosenCategory) btn-secondary @else btn-light @endif
-                                                w-100 p-2 mb-3" href="{{route('companyWithCategory', ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">
+                                                w-100 p-2 mb-3" href="{{route('company', ['companyName'=>$company->companyName, 'chosenCategory'=>$category->categoryName])}}">
                                                 {{$category->categoryName}} ({{$category->items->count()}})
                                             </a>
                                         @endforeach

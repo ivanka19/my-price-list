@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/company/{companyName}/admin', [CompanyAdminController::class, 'companyAdmin']) -> name('company-admin');
     Route::get('/company/{companyName}/admin/main-info', [CompanyAdminController::class, 'mainInfoAdmin']) -> name('main-info-admin');
     Route::get('/company/{companyName}/admin/categories', [CompanyAdminController::class, 'categoriesAdmin']) -> name('categories-admin');
-    Route::get('/company/{companyName}/admin/items', [CompanyAdminController::class, 'itemsAdmin']) -> name('items-admin');
+    Route::get('/company/{companyName}/admin/items/{chosenCategory?}', [CompanyAdminController::class, 'itemsAdmin']) -> name('items-admin');
     Route::get('/company/{companyName}/admin/sales', [CompanyAdminController::class, 'salesAdmin']) -> name('sales-admin');
 
     Route::post('/updateMainInfo', [CompanyAdminController::class, 'updateMainInfo']) -> name('updateMainInfo');
@@ -53,5 +53,4 @@ Route::get('/user/{userId}', [MainController::class, 'getAdminPage']) -> name('g
 
 Route::get('/company', function () { return view('company.companyEmpty'); }) -> name('companyEmpty');
 Route::get('/company/{companyName}/available', [MainController::class, 'available']) -> name('available');
-Route::get('/company/{companyName}', [MainController::class, 'companyData']) -> name('company');
-Route::get('/company/{companyName}/{chosenCategory}', [MainController::class, 'companyData']) -> name('companyWithCategory');
+Route::get('/company/{companyName}/{chosenCategory?}', [MainController::class, 'companyData']) -> name('company');

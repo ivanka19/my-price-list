@@ -33,11 +33,20 @@ class CompanyAdminController extends Controller
         return view('company.companyEmpty');
     }
 
-    public function itemsAdmin($companyName) {
+    public function itemsAdmin($companyName, $chosenCategory = null) {
         $company = Company::where('companyName', $companyName)->where('userId', session('authUser'))->first();
-        if ($company)
-            return view('company.admin.items', compact('company'));
-        return view('company.companyEmpty');
+        if ($company == null) {
+            return view('company.companyEmpty'); // Якщо компанії не знайдено
+        }
+        else {
+            if ($chosenCategory == null) {
+                $items = $company->items; // Всі товари
+            }
+            else {
+                $items = Category::where('categoryName', $chosenCategory)->first()->items; // Якщо передано категорію для сортування
+            }
+            return view('company.admin.items', compact('company', 'chosenCategory', 'items'));
+        }       
     }
     
     public function salesAdmin($companyName) {
@@ -89,7 +98,7 @@ class CompanyAdminController extends Controller
             'tikTok' => $request -> input('tiktok'),
         ]); 
 
-        return redirect()->back()->with('success', 'Дані було успішно додано');;
+        return redirect()->back()->with('success', 'Дані було успішно додано');
     }
 
     public function addCategory(Request $request) {
@@ -98,20 +107,25 @@ class CompanyAdminController extends Controller
             'categoryName' => $request->input('new-category'),
             'companyId' => $request->input('company-id'),
         ]);
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
     }
 
     public function updateCategory($categoryId, Request $request) {
         $request->validate([ 'category-name' =>  'required|min:2|max:50' ]);
         Category::where('categoryId', $categoryId)->update([ 'categoryName' => $request -> input('category-name'), ]); 
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
     }
 
     public function deleteCategory($categoryId) {
         $category = Category::where('categoryId', $categoryId)->first();
         if (session('authUser') == $category->company->userId) {
+            foreach ($category->items as $item) {
+                if (Storage::exists('public/images/'.$category->company->companyName.'/'.$item->itemPhoto)) {
+                    Storage::delete('public/images/'.$category->company->companyName.'/'.$item->itemPhoto);
+                }
+            }
             Category::where('categoryId', $categoryId)->delete();
-            return redirect()->back()->with('success', 'Дані було успішно змінено');;
+            return redirect()->back()->with('success', 'Дані було успішно змінено');
         }
         else { return view('company.companyEmpty'); }
     }
@@ -145,7 +159,7 @@ class CompanyAdminController extends Controller
             // 'available' => $request->input(''),
         ]);
 
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
     }
 
     public function updateItem($itemId, Request $request) {
@@ -164,7 +178,7 @@ class CompanyAdminController extends Controller
             'description' => $request->input('item-descr'),
             'available' => $avaible,
         ]);
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
     }
 
     public function deleteItem($itemId) {
@@ -174,7 +188,7 @@ class CompanyAdminController extends Controller
                 Storage::delete('public/images/'.$item->category->company->companyName.'/'.$item->itemPhoto);
             }
             Item::where('itemId', $itemId)->delete();
-            return redirect()->back()->with('success', 'Дані було успішно змінено');;
+            return redirect()->back()->with('success', 'Дані було успішно змінено');
         }
         else { 
             return view('company.companyEmpty'); 
@@ -193,14 +207,14 @@ class CompanyAdminController extends Controller
             'categoryId' => $request->input('categoryId'),
         ]);
 
-        return redirect()->back()->with('success', 'Дані було успішно змінено');;
+        return redirect()->back()->with('success', 'Дані було успішно змінено');
     }
 
     public function deleteSale($saleId) {
         $sale = Sale::where('saleId', $saleId)->first();
         if (session('authUser') == $sale->category->company->userId) {
             Sale::where('saleId', $saleId)->delete();
-            return redirect()->back()->with('success', 'Дані було успішно змінено');;
+            return redirect()->back()->with('success', 'Дані було успішно змінено');
         }
         else { 
             return view('company.companyEmpty'); 

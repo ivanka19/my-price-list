@@ -195,7 +195,7 @@
                                         <label for="item-descr">Опис товару</label>
                                     </div>
                                     <div class="form-check text-start">
-                                        <input class="form-check-input" type="checkbox" id="avaible" name="avaible" value="{{$item->available}}">
+                                        <input class="form-check-input" type="checkbox" id="avaible" name="avaible" @if ($item->available == 1) checked @endif>
                                         <label class="form-check-label" for="avaible">
                                             В наявності
                                         </label>

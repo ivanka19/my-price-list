@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/addItem', [CompanyAdminController::class, 'addItem']) -> name('addItem');
     Route::post('/updateItem/{itemId}', [CompanyAdminController::class, 'updateItem']) -> name('updateItem');
     Route::get('/deleteItem/{itemId}', [CompanyAdminController::class, 'deleteItem']) -> name('deleteItem');
+    Route::post('/changePriceOnCategory', [CompanyAdminController::class, 'changePriceOnCategory']) -> name('changePriceOnCategory');
 
     Route::post('/addSale', [CompanyAdminController::class, 'addSale']) -> name('addSale');
     Route::get('/deleteSale/{saleId}', [CompanyAdminController::class, 'deleteSale']) -> name('deleteSale');

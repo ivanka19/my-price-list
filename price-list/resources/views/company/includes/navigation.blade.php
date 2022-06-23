@@ -9,19 +9,19 @@
                 <a class="nav-link me-2 me-lg-4" href="{{route('company', $company->companyName)}}">
                     <span class="fa-solid fa-user"></span> Прайс-лист
                 </a>
-                <a class="nav-link me-2 me-lg-4" href="{{route('company-admin', $company->companyName)}}">
+                <a class="nav-link me-2 me-lg-4 @if (Route::currentRouteNamed('company-admin')) active @endif" href="{{route('company-admin', $company->companyName)}}">
                     <span class="fa-solid fa-screwdriver-wrench"></span> Адміністрування
                 </a>
-                <a class="nav-link me-2 me-lg-4" href="{{route('main-info-admin', $company->companyName)}}">
+                <a class="nav-link me-2 me-lg-4 @if (Route::currentRouteNamed('main-info-admin')) active @endif" href="{{route('main-info-admin', $company->companyName)}}">
                     <span class="fa-solid fa-info me-1"></span> Основна інформація
                 </a>
-                <a class="nav-link me-2 me-lg-4" href="{{route('categories-admin', $company->companyName)}}">
+                <a class="nav-link me-2 me-lg-4 @if (Route::currentRouteNamed('categories-admin')) active @endif" href="{{route('categories-admin', $company->companyName)}}">
                     <span class="fa-solid fa-list me-1"></span> Категорії
                 </a>
-                <a class="nav-link me-2 me-lg-4" href="{{route('items-admin', $company->companyName)}}">
+                <a class="nav-link me-2 me-lg-4 @if (Route::currentRouteNamed('items-admin')) active @endif" href="{{route('items-admin', $company->companyName)}}">
                     <span class="fa-solid fa-tags me-1"></span> Товари
                 </a>
-                <a class="nav-link me-2 me-lg-4" href="{{route('sales-admin', $company->companyName)}}">
+                <a class="nav-link me-2 me-lg-4 @if (Route::currentRouteNamed('sales-admin')) active @endif" href="{{route('sales-admin', $company->companyName)}}">
                     <span class="fa-solid fa-percent me-1"></span> Знижки
                 </a>
                 <a class="nav-link me-2 me-lg-4" href="/logout">

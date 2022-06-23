@@ -24,7 +24,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold">{{$item->itemName}}</h5>
+                <h5 class="modal-title fw-bold">{{$item->itemName}} @if($item->available) <span class="badge rounded-pill  bg-success">В наявності</span>@endif</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -48,6 +48,7 @@
                                 @else
                                     <span class="price old-price pe-1">{{$item->price}}</span>
                                     <span class="price new-price pe-1">{{$item->salePrice}}</span>
+                                    (-{{$item->category->sale->percent}} %)
                                 @endif
                                 грн
                             </p>

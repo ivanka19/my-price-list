@@ -23,8 +23,9 @@
                             <h1>Товари</h1>
                         </div>
                         <div class="col col-12">
-                            <p class="ps-4">На цій сторінці Ви можете додати товари, прив'язуючи їх до категорії: один товар може мати лише одну категорію. 
-                                Також, зверніть увагу: при редагуванні товару Ви не зможете змінити категорії та фото товару. Найкращим рішенням у цьому випадку буде видалити товар та додати новий.
+                            <p class="ps-4">На цій сторінці Ви можете додати товари, прив'язуючи їх до категорії: один товар може мати лише одну категорію. Ціни необхідно вводити через крапку (наприклад, 125.30).
+                                Зверніть увагу: при редагуванні товару Ви не зможете змінити категорії та фото товару. Найкращим рішенням у цьому випадку буде видалити товар та додати новий.
+                                При зміні ціни на всі товари категорії Ви можете вводити від'ємні числа для зменшення ціни.
                                 Будь ласка, не забувайте зберігати дані форми!
                             </p>
                         </div>
@@ -88,7 +89,45 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </section>
+    
+    <section class="section my-5">
+        <div class="container-xxl">
+                        
+            <form method="post" action="{{ route('changePriceOnCategory') }}" class="">
+                @csrf
+                <div class="row mb-3">
+                    <div class="col col-12">
+                        <h3 class="text-start mb-3">Змінити ціну на категорію товару</h3>
+                    </div>
 
+                    <div class="col col-12 col-md">
+                        <select class="form-select p-3 mb-3" id="calculate-category" name="calculate-category">
+                            <option value="" selected>Оберіть категорію</option>
+                            @foreach ($company->categories as $category)
+                                <option value="{{$category->categoryId}}">{{$category->categoryName}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col col-12 col-md">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="calculate-price" name="calculate-price" placeholder="Введіть різницю між сторою ціною" title="Введіть різницю між сторою ціною" value="{{ old('calculate-price') }}">
+                            <label for="calculate-price">Введіть різницю між сторою ціною</label>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-md">
+                        <div class="form-floating mb-3">
+                            <button type="submit" class="btn btn-success w-100 p-3" title="Зберегти">Зберегти</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <section class="section my-5">
+        <div class="container-xxl">
             <div class="row mb-3">
                 <div class="col col-12 col-md-8">
                     <h3 class="text-start mb-3">Редагувати або видалити товари</h3>

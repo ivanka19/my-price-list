@@ -70,7 +70,11 @@
                     </div>
                 </div>
             </form>
-
+        </div>
+    </section>
+        
+    <section class="section my-5">
+        <div class="container-xxl">
             <div class="row align-items-center">
                 <div class="col col-12">
                     <h3 class="text-start mb-3">Видалити знижку</h3>

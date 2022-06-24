@@ -84,21 +84,21 @@
             @foreach ($company->sales as $sale)
                 <form action="">
                     <div class="row align-items-center">
-                        <div class="col col-12 col-md-3">
+                        <div class="col col-12 col-md-4">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="sale-category" name="sale-category" placeholder="Категорія" value="{{$sale->category->categoryName}}">
                                 <label for="sale-category">Категорія</label>
                             </div>
                         </div>
 
-                        <div class="col col-12 col-md-3">
+                        <div class="col col-12 col-md-4">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="sale-percent" name="sale-percent" placeholder="Відсоток знижки" value="{{$sale->percent}}">
                                 <label for="sale-percent">Відсоток знижки</label>
                             </div>
                         </div>
 
-                        <div class="col col-12 col-md-3">
+                        <div class="col col-12 col-md-4">
                             <div class="form-floating mb-3">
                                 <a href="{{ route('deleteSale', $sale->saleId) }}" class="btn btn-outline-danger w-100 p-3" title="Видалити">Видалити</a>
                             </div>

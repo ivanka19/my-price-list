@@ -26,7 +26,7 @@ class FeedbackRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'email' => 'email|required|min:10|max:50',
-            'message' => 'required|min:20|max:500'
+            'message' => 'required|min:10|max:500'
         ];
     }
 

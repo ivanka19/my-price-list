@@ -29,8 +29,8 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.sendMail', ['data' => $this->data]);
-        // return $this->from('my-price-list@ukr.net', 'Example')
-        //             ->view('mail.sendMail', ['data' => $this->data]);
+        return $this->subject('New message')
+                    ->from('my-price-list@ukr.net')
+                    ->view('mail.sendMail', ['data' => $this->data]);
     }
 }

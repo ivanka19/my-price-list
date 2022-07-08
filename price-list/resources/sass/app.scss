@@ -285,6 +285,10 @@ $default-color: #9e9e9e;
     &-modal {
         font-size: 1.2em;
 
+        p {
+            text-align: justify;
+        }
+
         &-img {
             background-size: cover;
             background-position: center;

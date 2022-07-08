@@ -1,11 +1,7 @@
 @media print {
-    .company-product {
-        display: block;
-    }
-
-    .company-product .row {
-        display: block;
-        page-break-inside: avoid;
+    body {
+        margin: 0px !important;
+        padding: 0px !important;
     }
 
     .col-print-1 {
@@ -72,8 +68,16 @@
         margin-bottom: 10px !important;
     }
 
+    .mb-print-2 {
+        margin-bottom: 20px !important;
+    }
+
+    .ps-print-2 {
+        padding-left: 20px !important;
+    }
+
     .py-print-0 {
-        padding-top: 0;
-        padding-bottom: 0;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
 }

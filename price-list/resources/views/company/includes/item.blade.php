@@ -1,14 +1,14 @@
-<div class="col-10 col-sm-6 col-md-4 col-lg-3 col-print-12 mb-print-1 company-product card rounded-0 border-0">
+<div class="col-10 col-sm-6 col-md-4 col-lg-3 col-print-12 mb-print-2 company-product card rounded-0 border-0">
     <div class="row h-100 m-1">
 
         <div class="col-12 p-0 col-print-3">
             <div class="company-product-img ratio ratio-1x1" style="background-image: URL('{{asset('storage/images/'.$item->category->company->companyName.'/'.$item->itemPhoto)}}')"> </div>
         </div>
 
-        <div class="col-12 col-print-9 card-body d-flex flex-column d-print-block px-0 text-start">
+        <div class="col-12 col-print-9 card-body d-flex flex-column d-print-block px-0 ps-print-2 py-print-0 text-start">
             <h5 class="card-title mb-2 mb-print-1 fw-bold">{{$item->itemName}} @if($item->available) <span class="badge rounded-pill  bg-success">В наявності</span>@endif</h5>
             <p class="card-text mb-5 mb-print-1">
-                @if ($item->salePrice == NULL) <span class="price pe-1">{{$item->price}}</span>
+                @if ($item->salePrice == NULL) <span class="price">{{$item->price}}</span>
                 @else <span class="price old-price pe-1">{{$item->price}}</span> <span class="price new-price pe-1">{{$item->salePrice}}</span>
                 @endif
                 грн

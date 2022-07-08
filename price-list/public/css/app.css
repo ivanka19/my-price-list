@@ -284,6 +284,9 @@ select {
 .company-product, .company-modal {
   font-size: 1.2em;
 }
+.company-product p, .company-modal p {
+  text-align: justify;
+}
 .company-product-img, .company-modal-img {
   background-size: cover;
   background-position: center;
@@ -338,13 +341,9 @@ select {
   border-radius: 20px;
 }
 @media print {
-    .company-product {
-        display: block;
-    }
-
-    .company-product .row {
-        display: block;
-        page-break-inside: avoid;
+    body {
+        margin: 0px !important;
+        padding: 0px !important;
     }
 
     .col-print-1 {
@@ -411,8 +410,16 @@ select {
         margin-bottom: 10px !important;
     }
 
+    .mb-print-2 {
+        margin-bottom: 20px !important;
+    }
+
+    .ps-print-2 {
+        padding-left: 20px !important;
+    }
+
     .py-print-0 {
-        padding-top: 0;
-        padding-bottom: 0;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
 }
